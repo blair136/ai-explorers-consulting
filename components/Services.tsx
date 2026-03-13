@@ -1,66 +1,164 @@
 import React from 'react';
-import { cn } from '../lib/utils';
+import { BlurFade } from '../components/ui/blur-fade';
+import { MagicCard } from '../components/ui/magic-card';
 
-interface ServiceCardProps {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-  accent: string;
-}
-
-const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, accent }) => (
-  <div className="group relative bg-card rounded-2xl border border-border p-8 hover:shadow-lg hover:border-primary/20 transition-all duration-300">
-    <div className={cn(
-      "w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-colors duration-300",
-      accent
-    )}>
-      {icon}
-    </div>
-    <h3 className="text-xl font-bold text-foreground mb-3">{title}</h3>
-    <p className="text-muted-foreground leading-relaxed">{description}</p>
-  </div>
-);
+const services = [
+  {
+    title: 'KI-Strategie',
+    description:
+      'Wir entwickeln Ihre Roadmap für messbare Wettbewerbsvorteile. Klarer Fahrplan statt vager Experimente.',
+    outcome:
+      'Sie wissen danach genau, wo KI bei Ihnen Geld spart — und wo nicht.',
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Prozess-Automatisierung',
+    description:
+      'Sparen Sie hunderte Arbeitsstunden. Wir automatisieren Routineaufgaben durch intelligente KI-Agenten.',
+    outcome:
+      'Konkrete Prozesse identifiziert, automatisiert, übergeben. Kein Hype, keine offenen Enden.',
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
+        <path d="M21 3v5h-5" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Individuelle KI-Lösungen',
+    description:
+      'Maßgeschneiderte Software, die Ihre Unternehmensdaten in einen Wettbewerbsvorteil verwandelt.',
+    outcome:
+      'Software, die auf Ihre Daten, Ihre Sprache und Ihre Workflows zugeschnitten ist.',
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <polyline points="16 18 22 12 16 6" />
+        <polyline points="8 6 2 12 8 18" />
+        <line x1="14" y1="4" x2="10" y2="20" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Training & Vorträge',
+    description:
+      'Wir machen Ihr Team KI-fit. Praxis-Workshops, die sofortige Produktivitätssteigerung bewirken.',
+    outcome:
+      'Ihre Mitarbeiter verstehen danach, was KI kann — und trauen sich, es zu nutzen.',
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+        <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
+      </svg>
+    ),
+  },
+];
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="max-w-2xl mb-16">
-          <p className="text-primary font-semibold text-sm mb-3 tracking-wide uppercase">Unsere Leistungen</p>
-          <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground mb-5">
-            Technologie trifft{' '}
-            <span className="text-primary">wirklichen Nutzen</span>
-          </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Wir analysieren Ihre Prozesse und implementieren Lösungen, die direkten Mehrwert schaffen.
-          </p>
+    <section id="services" className="relative py-24 lg:py-32">
+      {/* Subtle background glow */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[600px] w-[900px] rounded-full bg-primary/[0.03] blur-[120px]" />
+      </div>
+
+      <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="mx-auto max-w-3xl text-center mb-16 lg:mb-20">
+          <BlurFade delay={0.1} inView>
+            <span className="inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium tracking-wider text-primary mb-6">
+              UNSERE LEISTUNGEN
+            </span>
+          </BlurFade>
+          <BlurFade delay={0.2} inView>
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+              Technologie trifft{' '}
+              <span className="gradient-text">wirklichen Nutzen</span>
+            </h2>
+          </BlurFade>
+          <BlurFade delay={0.3} inView>
+            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+              Von der Strategie bis zur Umsetzung — wir begleiten Sie auf dem
+              Weg zur KI-getriebenen Organisation.
+            </p>
+          </BlurFade>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <ServiceCard
-            title="KI-Strategie"
-            description="Wir entwickeln Ihre Roadmap für messbare Wettbewerbsvorteile. Klarer Fahrplan statt vager Experimente."
-            accent="bg-primary/10 text-primary"
-            icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>}
-          />
-          <ServiceCard
-            title="Prozess-Automatisierung"
-            description="Sparen Sie hunderte Arbeitsstunden. Wir automatisieren Routineaufgaben durch intelligente KI-Agenten."
-            accent="bg-blue-50 text-blue-600"
-            icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182" /></svg>}
-          />
-          <ServiceCard
-            title="Individuelle KI-Lösungen"
-            description="Maßgeschneiderte Software, die Ihre Unternehmensdaten in einen Wettbewerbsvorteil verwandelt."
-            accent="bg-violet-50 text-violet-600"
-            icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg>}
-          />
-          <ServiceCard
-            title="Training & Vorträge"
-            description="Wir machen Ihr Team KI-fit. Praxis-Workshops, die sofortige Produktivitätssteigerung bewirken."
-            accent="bg-emerald-50 text-emerald-600"
-            icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342" /></svg>}
-          />
+        {/* Service Cards Grid */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {services.map((service, index) => (
+            <BlurFade key={service.title} delay={0.2 + index * 0.1} inView>
+              <MagicCard
+                className="group relative h-full rounded-2xl border border-white/[0.08] bg-[#0a0a0a] p-6 transition-all duration-500 hover:border-primary/20 glow-card"
+                gradientColor="rgba(94,234,212,0.08)"
+              >
+                <div className="flex flex-col gap-4">
+                  {/* Icon */}
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary/15">
+                    {service.icon}
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-lg font-semibold text-white">
+                    {service.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {service.description}
+                  </p>
+
+                  {/* Outcome */}
+                  <p className="text-sm font-medium text-primary/80 mt-3 pt-3 border-t border-border/50">
+                    {service.outcome}
+                  </p>
+                </div>
+              </MagicCard>
+            </BlurFade>
+          ))}
         </div>
       </div>
     </section>

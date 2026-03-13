@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Datenschutz() {
   return (
-    <div className="text-left text-muted-foreground space-y-6">
+    <div className="text-left text-muted-foreground space-y-6 [&_h3]:text-foreground [&_p.font-medium]:text-foreground">
       <h2 className="text-2xl font-bold text-foreground">Datenschutzerklärung</h2>
 
       <section>

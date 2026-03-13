@@ -5,41 +5,47 @@ interface TrustSectionProps {
 }
 
 export default function TrustSection({ onOpenDatenschutz }: TrustSectionProps) {
-  const [isVisible, setIsVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const consent = localStorage.getItem('cookie-consent');
     if (!consent) {
-      const timer = setTimeout(() => setIsVisible(true), 1500);
+      const timer = setTimeout(() => setVisible(true), 1500);
       return () => clearTimeout(timer);
     }
   }, []);
 
-  if (!isVisible) return null;
+  const handleConsent = (type: string) => {
+    localStorage.setItem('cookie-consent', type);
+    setVisible(false);
+  };
+
+  if (!visible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-[100] p-4 animate-in slide-in-from-bottom duration-500">
-      <div className="max-w-3xl mx-auto bg-card border border-border rounded-2xl shadow-lg p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div className="flex-1">
-          <p className="text-sm text-foreground font-medium mb-1">Für ein optimales Erlebnis</p>
-          <p className="text-xs text-muted-foreground leading-relaxed">
-            Wir nutzen Cookies, um unsere Website zu verbessern.{' '}
-            <button onClick={onOpenDatenschutz} className="text-primary hover:underline">Mehr erfahren</button>
+    <div className="fixed bottom-0 left-0 right-0 z-50 animate-in slide-in-from-bottom duration-500">
+      <div className="bg-card border-t border-border shadow-2xl shadow-black/50">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-muted-foreground text-center sm:text-left">
+            Wir nutzen Cookies für eine bessere Nutzererfahrung.{' '}
+            <button onClick={onOpenDatenschutz} className="text-primary hover:underline">
+              Datenschutzerklärung
+            </button>
           </p>
-        </div>
-        <div className="flex items-center gap-2 flex-shrink-0">
-          <button
-            onClick={() => { localStorage.setItem('cookie-consent', 'necessary'); setIsVisible(false); }}
-            className="px-4 py-2 rounded-lg border border-border text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
-          >
-            Nur notwendige
-          </button>
-          <button
-            onClick={() => { localStorage.setItem('cookie-consent', 'all'); setIsVisible(false); }}
-            className="px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
-          >
-            Alle akzeptieren
-          </button>
+          <div className="flex gap-3 flex-shrink-0">
+            <button
+              onClick={() => handleConsent('necessary')}
+              className="px-4 py-2 text-sm font-medium border border-border rounded-lg hover:bg-accent transition-colors text-foreground"
+            >
+              Nur notwendige
+            </button>
+            <button
+              onClick={() => handleConsent('all')}
+              className="px-4 py-2 text-sm font-medium bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
+            >
+              Alle akzeptieren
+            </button>
+          </div>
         </div>
       </div>
     </div>

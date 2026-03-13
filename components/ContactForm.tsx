@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ShimmerButton } from '../components/ui/shimmer-button';
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -11,8 +12,8 @@ export default function ContactForm() {
   if (submitted) {
     return (
       <div className="text-center py-10">
-        <div className="w-14 h-14 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg className="w-7 h-7 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+        <div className="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg className="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
@@ -31,7 +32,7 @@ export default function ContactForm() {
             required
             type="text"
             placeholder="Ihr Name"
-            className="w-full bg-background border border-input rounded-xl px-4 py-3 text-foreground focus:border-primary focus:ring-2 focus:ring-primary/10 outline-none transition-all placeholder:text-muted-foreground"
+            className="w-full bg-input border border-border rounded-xl px-4 py-3 text-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-muted-foreground"
           />
         </div>
         <div>
@@ -40,7 +41,7 @@ export default function ContactForm() {
             required
             type="email"
             placeholder="name@firma.de"
-            className="w-full bg-background border border-input rounded-xl px-4 py-3 text-foreground focus:border-primary focus:ring-2 focus:ring-primary/10 outline-none transition-all placeholder:text-muted-foreground"
+            className="w-full bg-input border border-border rounded-xl px-4 py-3 text-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-muted-foreground"
           />
         </div>
       </div>
@@ -51,7 +52,7 @@ export default function ContactForm() {
           required
           type="text"
           placeholder="Ihre Firma GmbH"
-          className="w-full bg-background border border-input rounded-xl px-4 py-3 text-foreground focus:border-primary focus:ring-2 focus:ring-primary/10 outline-none transition-all placeholder:text-muted-foreground"
+          className="w-full bg-input border border-border rounded-xl px-4 py-3 text-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-muted-foreground"
         />
       </div>
 
@@ -61,19 +62,22 @@ export default function ContactForm() {
           required
           rows={3}
           placeholder="Welchen Prozess möchten Sie automatisieren?"
-          className="w-full bg-background border border-input rounded-xl px-4 py-3 text-foreground focus:border-primary focus:ring-2 focus:ring-primary/10 outline-none transition-all resize-none placeholder:text-muted-foreground"
+          className="w-full bg-input border border-border rounded-xl px-4 py-3 text-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none placeholder:text-muted-foreground"
         />
       </div>
 
-      <button
+      <ShimmerButton
         type="submit"
-        className="w-full bg-primary text-primary-foreground font-semibold py-3.5 rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+        shimmerColor="#5eead4"
+        background="rgba(16,24,40,0.9)"
+        className="w-full text-sm font-semibold py-3.5"
+        borderRadius="12px"
       >
         Jetzt Strategie-Session sichern
-        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
         </svg>
-      </button>
+      </ShimmerButton>
 
       <p className="text-center text-xs text-muted-foreground">
         Ihre Daten sind sicher & 100% DSGVO-konform.

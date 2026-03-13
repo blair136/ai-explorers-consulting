@@ -1,47 +1,96 @@
-import React from 'react';
-import { cn } from '../lib/utils';
+import React, { useState } from 'react';
+import { BlurFade } from '../components/ui/blur-fade';
+import { BorderBeam } from '../components/ui/border-beam';
 
-interface PillarData {
-  letter: string;
-  title: string;
-  description: string;
-}
-
-const pillars: PillarData[] = [
-  { letter: 'H', title: 'Holistisch', description: 'Wir betrachten Technik, Team und Kultur als eine Einheit für nachhaltigen Erfolg.' },
-  { letter: 'U', title: 'User-Centric', description: 'Der Mensch steht im Mittelpunkt jeder Lösung. Akzeptanz ist unser wichtigster KPI.' },
-  { letter: 'M', title: 'Moralisch', description: 'Verantwortungsvoller Umgang mit Daten und ethische KI-Prinzipien sind unser Standard.' },
-  { letter: 'A', title: 'Adaptiv', description: 'Unsere Lösungen sind so flexibel wie der Markt und wachsen organisch mit Ihren Anforderungen.' },
-  { letter: 'N', title: 'Nachhaltig', description: 'Keine kurzfristigen Hypes, sondern solide Infrastrukturen für die digitale Souveränität.' },
+const pillars = [
+  {
+    letter: 'H',
+    title: 'Holistisch',
+    description:
+      'Wir schauen auf Prozesse, Menschen und Technik gemeinsam — nicht nur auf die Software.',
+  },
+  {
+    letter: 'U',
+    title: 'User-Centric',
+    description:
+      'KI-Lösungen, die Ihre Mitarbeiter tatsächlich nutzen — keine Tools, die im Regal verstauben.',
+  },
+  {
+    letter: 'M',
+    title: 'Moralisch',
+    description:
+      'Ihre Daten bleiben Ihre Daten. Transparenz und DSGVO-Konformität sind für uns kein Bonus, sondern Standard.',
+  },
+  {
+    letter: 'A',
+    title: 'Adaptiv',
+    description:
+      'Wir bauen keine starren Systeme. Was wir implementieren, wächst mit Ihrem Unternehmen mit.',
+  },
+  {
+    letter: 'N',
+    title: 'Nachhaltig',
+    description:
+      'Kein Projekt, das nach drei Monaten niemand mehr bedient. Wir sorgen für echte Verankerung im Alltag.',
+  },
 ];
 
 export default function HumanFramework() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   return (
-    <section id="human" className="py-24 lg:py-32 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="max-w-2xl mb-16">
-          <p className="text-primary font-semibold text-sm mb-3 tracking-wide uppercase">Unsere Philosophie</p>
-          <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground mb-5">
-            Das <span className="text-primary">HUMAN</span> Framework
-          </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Echte Transformation gelingt nur, wenn Technologie den Menschen stärkt.
-            Wir verbinden künstliche Intelligenz mit menschlicher Intuition.
-          </p>
+    <section id="human" className="relative py-24 lg:py-32">
+      {/* Subtle mesh gradient background */}
+      <div className="mesh-gradient absolute inset-0 -z-10" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="mx-auto mb-16 max-w-2xl text-center">
+          <BlurFade delay={0.1}>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
+              Unsere Philosophie
+            </p>
+          </BlurFade>
+          <BlurFade delay={0.2}>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+              Das{' '}
+              <span className="gradient-text">HUMAN</span>{' '}
+              Framework
+            </h2>
+          </BlurFade>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
-          {pillars.map((pillar) => (
-            <div
-              key={pillar.letter}
-              className="group relative bg-card rounded-2xl border border-border p-7 hover:shadow-lg hover:border-primary/20 transition-all duration-300"
-            >
-              <div className="text-4xl font-extrabold text-primary/20 group-hover:text-primary/40 transition-colors mb-4">
-                {pillar.letter}
+        {/* Pillars Grid */}
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5">
+          {pillars.map((pillar, index) => (
+            <BlurFade key={pillar.letter} delay={0.15 + index * 0.1}>
+              <div
+                className="relative overflow-hidden rounded-2xl border border-border bg-card p-7 h-full"
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                {/* Big letter watermark */}
+                <span className="absolute -right-1 -top-2 select-none text-6xl font-extrabold text-primary/20">
+                  {pillar.letter}
+                </span>
+
+                {/* Content */}
+                <div className="relative z-10">
+                  <h3 className="mb-2 text-lg font-bold">{pillar.title}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {pillar.description}
+                  </p>
+                </div>
+
+                {/* BorderBeam on hover */}
+                {hoveredIndex === index && (
+                  <BorderBeam
+                    colorFrom="#5eead4"
+                    colorTo="#06b6d4"
+                  />
+                )}
               </div>
-              <h3 className="text-lg font-bold text-foreground mb-2">{pillar.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{pillar.description}</p>
-            </div>
+            </BlurFade>
           ))}
         </div>
       </div>

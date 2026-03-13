@@ -3,10 +3,13 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import LogoCloud from './components/LogoCloud';
 import Services from './components/Services';
+import ProcessBlock from './components/ProcessBlock';
+import TeamSection from './components/TeamSection';
+import ReadinessCheck from './components/ReadinessCheck';
 import HumanFramework from './components/HumanFramework';
+import Newsletter from './components/Newsletter';
 import FAQ from './components/FAQ';
 import ContactForm from './components/ContactForm';
-import Newsletter from './components/Newsletter';
 import TrustSection from './components/TrustSection';
 import Footer from './components/Footer';
 import LegalModal from './components/LegalModal';
@@ -52,20 +55,24 @@ function App() {
         <Hero />
         <LogoCloud />
         <Services />
+        <ProcessBlock />
+        <TeamSection />
+        <ReadinessCheck />
         <HumanFramework />
         <Newsletter />
         <FAQ />
 
         {/* Contact CTA Section */}
-        <section id="contact" className="py-24 lg:py-32 bg-muted/30">
+        <section id="contact" className="py-24 lg:py-32 relative">
+          <div className="absolute inset-0 mesh-gradient -z-10" />
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-center">
               <p className="text-primary font-semibold text-sm mb-3 tracking-wide uppercase">Kontakt</p>
               <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground mb-4">
-                Bereit für Ihre KI-Roadmap?
+                Bereit für Ihre <span className="gradient-text">KI-Roadmap</span>?
               </h2>
               <p className="text-muted-foreground text-lg mb-12 max-w-xl mx-auto">
-                In nur 15 Minuten analysieren wir Ihr Potenzial und erstellen Ihren Umsetzungsplan. Kostenlos & unverbindlich.
+                In 15 Minuten zeigen wir Ihnen, welche drei Prozesse in Ihrem Unternehmen heute schon automatisierbar wären — kostenlos und ohne Verpflichtung.
               </p>
               <ContactForm />
             </div>
