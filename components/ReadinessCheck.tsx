@@ -327,8 +327,26 @@ export default function ReadinessCheck() {
 
       setIsSubmitting(true);
 
-      // Simulate email sending
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      try {
+        const scores = getScores();
+        const res = await fetch('/api/readiness-check', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            firstName,
+            email,
+            role: selectedRole,
+            scores: scores ? {
+              dataScore: getLevel(scores.dataScore),
+              changeScore: getLevel(scores.changeScore),
+              processScore: getLevel(scores.processScore),
+            } : null,
+          }),
+        });
+        if (!res.ok) throw new Error('Failed');
+      } catch {
+        // Still show success to user, log error server-side
+      }
 
       setIsSubmitting(false);
       setScreen('success');

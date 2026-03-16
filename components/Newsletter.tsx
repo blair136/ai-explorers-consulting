@@ -8,14 +8,23 @@ export default function Newsletter() {
   const [name, setName] = useState('');
   const [status, setStatus] = useState<'idle' | 'success' | 'loading'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
-    setTimeout(() => {
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, name }),
+      });
+      if (!res.ok) throw new Error('Failed');
       setStatus('success');
       setEmail('');
       setName('');
-    }, 1500);
+    } catch {
+      setStatus('idle');
+      alert('Es gab ein Problem. Bitte versuchen Sie es erneut.');
+    }
   };
 
   return (

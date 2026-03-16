@@ -5,7 +5,7 @@ import { BlurFade } from '../components/ui/blur-fade'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-background">
+    <section className="relative min-h-[85vh] sm:min-h-[92vh] flex items-center overflow-hidden bg-background">
       {/* Mesh gradient overlay */}
       <div className="mesh-gradient absolute inset-0 z-0" />
 
@@ -19,11 +19,11 @@ export default function Hero() {
       />
 
       {/* Main content */}
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-20 lg:px-8">
-        <div className="max-w-4xl flex flex-col gap-7">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-16 sm:py-20 lg:px-8">
+        <div className="max-w-4xl flex flex-col gap-5 sm:gap-7">
           {/* Headline */}
           <BlurFade delay={0} inView>
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-[3.5rem] lg:leading-[1.15]">
+            <h1 className="text-[1.65rem] leading-[1.2] font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-[3.5rem] lg:leading-[1.15]">
               <span className="text-foreground">Ihre Fachkräfte verlieren täglich Stunden </span>
               <span className="gradient-text">an Aufgaben, die KI heute übernehmen kann.</span>
             </h1>
@@ -31,22 +31,22 @@ export default function Hero() {
 
           {/* Subtitle */}
           <BlurFade delay={0.1} inView>
-            <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+            <p className="max-w-2xl text-base sm:text-lg leading-relaxed text-muted-foreground sm:text-xl">
               Wir zeigen Ihnen welche — und setzen es um.
             </p>
-            <p className="mt-2 max-w-2xl text-base leading-relaxed text-muted-foreground/70">
+            <p className="mt-1.5 sm:mt-2 max-w-2xl text-sm sm:text-base leading-relaxed text-muted-foreground/70">
               Von der Strategie bis zur produktiven Implementierung.
             </p>
           </BlurFade>
 
           {/* CTA buttons */}
           <BlurFade delay={0.2} inView>
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1 sm:pt-2">
               <a href="#contact">
                 <ShimmerButton
                   shimmerColor="#5eead4"
                   background="rgba(16,24,40,0.9)"
-                  className="px-8 py-4 text-base font-semibold"
+                  className="px-6 py-3 text-sm sm:px-8 sm:py-4 sm:text-base font-semibold"
                 >
                   Kostenloses Erstgespräch
                   <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -57,7 +57,7 @@ export default function Hero() {
 
               <a
                 href="#services"
-                className="rounded-full border border-border px-8 py-4 text-base font-semibold text-foreground transition-colors hover:bg-muted"
+                className="rounded-full border border-border px-6 py-3 text-sm sm:px-8 sm:py-4 sm:text-base font-semibold text-foreground transition-colors hover:bg-muted"
               >
                 Leistungen entdecken
               </a>
@@ -66,10 +66,10 @@ export default function Hero() {
 
           {/* Trust badges */}
           <BlurFade delay={0.3} inView>
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-4 py-2 text-sm text-muted-foreground">
+            <div className="flex items-center gap-3 sm:gap-4 pt-1 sm:pt-2">
+              <span className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-border bg-muted/50 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm text-muted-foreground">
                 <svg
-                  className="h-4 w-4 text-[#5eead4]"
+                  className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#5eead4]"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -84,9 +84,9 @@ export default function Hero() {
                 DSGVO-konform
               </span>
 
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-4 py-2 text-sm text-muted-foreground">
+              <span className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-border bg-muted/50 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm text-muted-foreground">
                 <svg
-                  className="h-4 w-4 text-[#5eead4]"
+                  className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#5eead4]"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
