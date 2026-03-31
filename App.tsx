@@ -1,4 +1,5 @@
 import React from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import LogoCloud from './components/LogoCloud';
@@ -87,6 +88,8 @@ function App() {
         {legalView === 'impressum' && <Impressum />}
         {legalView === 'datenschutz' && <Datenschutz />}
       </LegalModal>
+
+      <Analytics />
     </div>
   );
 }
