@@ -677,7 +677,7 @@ export default function ReadinessCheck() {
               )}
             </ShimmerButton>
 
-            <p className="text-center text-xs text-muted-foreground/60">
+            <p className="text-center text-xs text-muted-foreground">
               Keine Weitergabe. Kein Spam. Abmeldung jederzeit.
             </p>
           </form>
@@ -721,7 +721,7 @@ export default function ReadinessCheck() {
         <p className="text-lg text-muted-foreground leading-relaxed">
           Ihre Auswertung ist unterwegs.
         </p>
-        <p className="mt-2 text-sm text-muted-foreground/60">
+        <p className="mt-2 text-sm text-muted-foreground">
           Prüfen Sie Ihr Postfach — die E-Mail sollte in wenigen Minuten ankommen.
         </p>
       </div>

@@ -22,16 +22,17 @@ export default function LogoCloud() {
           Unternehmen, mit denen wir bereits gearbeitet haben
         </p>
         <div className="relative">
-          <Marquee className="[--gap:3rem]" pauseOnHover>
+          <Marquee className="[--gap:1.5rem]" pauseOnHover>
             {logos.map((logo, i) => (
               <div
                 key={i}
-                className="flex items-center justify-center h-12 mx-6"
+                className="flex items-center justify-center mx-3 px-8 py-5 bg-gradient-to-br from-zinc-100 to-zinc-50 hover:from-white hover:to-zinc-100 rounded-xl border border-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-500"
+                style={{ boxShadow: '0 4px 6px -1px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.08) inset' }}
               >
                 <img
                   src={logo.src}
                   alt={logo.name}
-                  className="h-7 lg:h-9 w-auto object-contain opacity-40 hover:opacity-80 transition-opacity duration-300"
+                  className="h-8 lg:h-10 w-auto object-contain"
                 />
               </div>
             ))}

@@ -34,7 +34,7 @@ export default function Hero() {
             <p className="max-w-2xl text-base sm:text-lg leading-relaxed text-muted-foreground sm:text-xl">
               Wir zeigen Ihnen welche — und setzen es um.
             </p>
-            <p className="mt-1.5 sm:mt-2 max-w-2xl text-sm sm:text-base leading-relaxed text-muted-foreground/70">
+            <p className="mt-1.5 sm:mt-2 max-w-2xl text-sm sm:text-base leading-relaxed text-muted-foreground">
               Von der Strategie bis zur produktiven Implementierung.
             </p>
           </BlurFade>
