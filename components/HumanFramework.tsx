@@ -77,7 +77,7 @@ export default function HumanFramework() {
                 {/* Content */}
                 <div className="relative z-10">
                   <h3 className="mb-3 text-lg font-bold">{pillar.title}</h3>
-                  <p className="text-base leading-relaxed text-foreground/80">
+                  <p className="text-base leading-relaxed text-foreground">
                     {pillar.description}
                   </p>
                 </div>

@@ -84,7 +84,7 @@ export default function ProcessBlock() {
                 </h3>
 
                 {/* Description */}
-                <p className="mt-3 text-sm leading-relaxed text-foreground/80">
+                <p className="mt-3 text-sm leading-relaxed text-foreground">
                   {step.description}
                 </p>
               </div>
