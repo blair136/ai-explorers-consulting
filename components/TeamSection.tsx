@@ -46,7 +46,7 @@ export default function TeamSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {teamMembers.map((member, index) => (
             <BlurFade key={member.name} delay={0.3 + index * 0.15} inView>
-              <div className="bg-card border border-border rounded-2xl p-8 flex flex-col items-center text-center h-full">
+              <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 flex flex-col items-center text-center h-full">
                 <div className="w-32 h-32 rounded-full overflow-hidden mb-6 ring-2 ring-primary/20 ring-offset-2 ring-offset-background">
                   <img
                     src={member.image}
@@ -54,7 +54,7 @@ export default function TeamSection() {
                     className="w-full h-full object-cover object-top"
                   />
                 </div>
-                <h3 className="text-xl font-semibold gradient-text mb-1">
+                <h3 className="text-lg sm:text-xl font-semibold gradient-text mb-1">
                   {member.name}
                 </h3>
                 <span className="text-xs font-medium text-primary/70 uppercase tracking-wider mb-4">

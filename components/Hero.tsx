@@ -22,7 +22,7 @@ export default function Hero() {
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-16 sm:py-20 lg:px-8">
         <div className="max-w-4xl flex flex-col gap-5 sm:gap-7">
           {/* Headline */}
-          <BlurFade delay={0} inView>
+          <BlurFade delay={0} >
             <h1 className="text-[1.65rem] leading-[1.2] font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-[3.5rem] lg:leading-[1.15]">
               <span className="text-foreground">Ihre Fachkräfte verlieren täglich Stunden </span>
               <span className="gradient-text">an Aufgaben, die KI heute übernehmen kann.</span>
@@ -30,7 +30,7 @@ export default function Hero() {
           </BlurFade>
 
           {/* Subtitle */}
-          <BlurFade delay={0.1} inView>
+          <BlurFade delay={0.1} >
             <p className="max-w-2xl text-base sm:text-lg leading-relaxed text-muted-foreground sm:text-xl">
               Wir zeigen Ihnen welche — und setzen es um.
             </p>
@@ -40,7 +40,7 @@ export default function Hero() {
           </BlurFade>
 
           {/* CTA buttons */}
-          <BlurFade delay={0.2} inView>
+          <BlurFade delay={0.2} >
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1 sm:pt-2">
               <a href="#contact">
                 <ShimmerButton
@@ -65,7 +65,7 @@ export default function Hero() {
           </BlurFade>
 
           {/* Trust badges */}
-          <BlurFade delay={0.3} inView>
+          <BlurFade delay={0.3} >
             <div className="flex items-center gap-3 sm:gap-4 pt-1 sm:pt-2">
               <span className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-border bg-muted/50 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm text-muted-foreground">
                 <svg

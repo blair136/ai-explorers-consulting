@@ -587,7 +587,7 @@ export default function ReadinessCheck() {
 
           {/* Mini scores preview */}
           {scores && (
-            <div className="grid grid-cols-3 gap-3 mb-8">
+            <div className="grid grid-cols-3 gap-2 mb-8">
               {[
                 { label: 'Datenreife', score: scores.dataScore },
                 { label: 'Change-Readiness', score: scores.changeScore },
@@ -595,7 +595,7 @@ export default function ReadinessCheck() {
               ].map((dim) => (
                 <div
                   key={dim.label}
-                  className="rounded-lg border border-border bg-card/50 p-3 text-center"
+                  className="rounded-lg border border-border bg-card/50 p-2 sm:p-3 text-center"
                 >
                   <p className="text-xs text-muted-foreground mb-1">{dim.label}</p>
                   <p className={`text-sm font-semibold ${getLevelColor(dim.score)}`}>

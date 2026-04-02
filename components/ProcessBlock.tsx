@@ -67,14 +67,14 @@ export default function ProcessBlock() {
 
           {steps.map((step, index) => (
             <BlurFade key={step.number} delay={0.2 + index * 0.15} inView>
-              <div className="relative bg-card border border-border rounded-2xl p-7 transition-all duration-500 hover:border-primary/20">
+              <div className="relative bg-card border border-border rounded-2xl p-5 sm:p-7 transition-all duration-500 hover:border-primary/20">
                 {/* Step Number */}
-                <span className="gradient-text text-5xl font-bold leading-none">
+                <span className="gradient-text text-4xl sm:text-5xl font-bold leading-none">
                   {step.number}
                 </span>
 
                 {/* Title */}
-                <h3 className="mt-5 text-xl font-semibold text-white">
+                <h3 className="mt-4 sm:mt-5 text-lg sm:text-xl font-semibold text-white">
                   {step.title}{' '}
                   {step.subtitle && (
                     <span className="text-base font-normal text-primary">

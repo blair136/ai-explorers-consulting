@@ -31,7 +31,7 @@ export default function Newsletter() {
     <section className="py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <BlurFade delay={0} inView>
-          <div className="relative bg-card rounded-3xl p-10 lg:p-16 w-full border border-border overflow-hidden">
+          <div className="relative bg-card rounded-3xl p-6 sm:p-10 lg:p-16 w-full border border-border overflow-hidden">
             <ShineBorder shineColor={["#5eead4", "#06b6d4", "#14b8a6"]} />
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div>
@@ -39,7 +39,7 @@ export default function Newsletter() {
                   <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                   Wöchentliches KI-Briefing
                 </div>
-                <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground mb-4">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground mb-4">
                   <span className="gradient-text">KI-Kompass</span> für den Mittelstand
                 </h2>
                 <p className="text-muted-foreground text-lg leading-relaxed mb-8">
