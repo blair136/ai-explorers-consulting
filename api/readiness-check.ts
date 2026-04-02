@@ -143,7 +143,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             <!-- CTA -->
             <div style="padding: 32px 40px; background: #0a1628; border-radius: 0 0 12px 12px; text-align: center;">
               <p style="margin: 0 0 8px; color: #d1fae5; font-size: 15px; line-height: 1.6;">
-                Möchten Sie wissen, welche drei Prozesse in Ihrem Unternehmen heute schon automatisierbar wären?
+                In einem kostenlosen Erstgespräch zeigen wir Ihnen Ihre konkreten nächsten Schritte — zugeschnitten auf Ihr Profil.
               </p>
               <p style="margin: 0 0 24px; color: #9ca3af; font-size: 13px;">Kostenlos, unverbindlich, in 15 Minuten.</p>
               <a href="https://www.ai-xplorers.de/#contact" style="display: inline-block; background: #5eead4; color: #0a1628; font-weight: 700; font-size: 15px; padding: 14px 32px; border-radius: 8px; text-decoration: none;">
@@ -169,26 +169,40 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         reply_to: email,
         subject: `📊 Neuer Readiness-Check: ${firstName} — ${dataLevel} / ${changeLevel} / ${processLevel}`,
         html: `
-          <div style="font-family: sans-serif; max-width: 500px; margin: 0 auto; padding: 24px; background: #f9fafb; border-radius: 12px;">
+          <div style="font-family: sans-serif; max-width: 560px; margin: 0 auto; padding: 24px; background: #f9fafb; border-radius: 12px;">
             <h2 style="margin-top: 0; color: #111827;">Neuer KI-Readiness-Check</h2>
-            <table style="width: 100%; border-collapse: collapse;">
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
               <tr><td style="padding: 6px 0; color: #6b7280; width: 130px;">Name</td><td style="color: #111827; font-weight: 600;">${firstName}</td></tr>
               <tr><td style="padding: 6px 0; color: #6b7280;">E-Mail</td><td><a href="mailto:${email}" style="color: #0ea5e9;">${email}</a></td></tr>
               <tr><td style="padding: 6px 0; color: #6b7280;">Rolle</td><td style="color: #111827;">${roleLabel}</td></tr>
             </table>
-            <div style="margin-top: 16px; display: flex; gap: 12px;">
-              <div style="flex: 1; padding: 12px; background: #fff; border-radius: 8px; border: 1px solid #e5e7eb; text-align: center;">
-                <p style="margin: 0 0 4px; font-size: 11px; color: #9ca3af;">Datenreife</p>
-                <p style="margin: 0; font-weight: 700; color: ${dataColor};">${dataLevel}</p>
+
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+
+              <div style="background: #ffffff; border-radius: 10px; padding: 16px 20px; border-left: 4px solid ${dataColor};">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span style="font-size: 12px; color: #6b7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Datenreife</span>
+                  <span style="font-size: 13px; font-weight: 700; color: ${dataColor};">${dataLevel}</span>
+                </div>
+                <p style="margin: 0; color: #374151; font-size: 13px; line-height: 1.6;">${dataAdvice}</p>
               </div>
-              <div style="flex: 1; padding: 12px; background: #fff; border-radius: 8px; border: 1px solid #e5e7eb; text-align: center;">
-                <p style="margin: 0 0 4px; font-size: 11px; color: #9ca3af;">Change-Readiness</p>
-                <p style="margin: 0; font-weight: 700; color: ${changeColor};">${changeLevel}</p>
+
+              <div style="background: #ffffff; border-radius: 10px; padding: 16px 20px; border-left: 4px solid ${changeColor};">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span style="font-size: 12px; color: #6b7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Change-Readiness</span>
+                  <span style="font-size: 13px; font-weight: 700; color: ${changeColor};">${changeLevel}</span>
+                </div>
+                <p style="margin: 0; color: #374151; font-size: 13px; line-height: 1.6;">${changeAdvice}</p>
               </div>
-              <div style="flex: 1; padding: 12px; background: #fff; border-radius: 8px; border: 1px solid #e5e7eb; text-align: center;">
-                <p style="margin: 0 0 4px; font-size: 11px; color: #9ca3af;">Prozessklarheit</p>
-                <p style="margin: 0; font-weight: 700; color: ${processColor};">${processLevel}</p>
+
+              <div style="background: #ffffff; border-radius: 10px; padding: 16px 20px; border-left: 4px solid ${processColor};">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span style="font-size: 12px; color: #6b7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Prozessklarheit</span>
+                  <span style="font-size: 13px; font-weight: 700; color: ${processColor};">${processLevel}</span>
+                </div>
+                <p style="margin: 0; color: #374151; font-size: 13px; line-height: 1.6;">${processAdvice}</p>
               </div>
+
             </div>
           </div>
         `,
