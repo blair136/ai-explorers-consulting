@@ -147,7 +147,7 @@ export default function Services() {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-sm leading-relaxed text-foreground/80">
                     {service.description}
                   </p>
 

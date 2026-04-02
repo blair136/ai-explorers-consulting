@@ -60,7 +60,7 @@ export default function TeamSection() {
                 <span className="text-xs font-medium text-primary/70 uppercase tracking-wider mb-4">
                   {member.tag}
                 </span>
-                <p className="text-muted-foreground text-sm leading-relaxed">
+                <p className="text-foreground/80 text-sm leading-relaxed">
                   {member.description}
                 </p>
               </div>
