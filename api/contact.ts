@@ -20,7 +20,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       },
       body: JSON.stringify({
         from: 'AI Xplorers Website <hello@ai-xplorers.de>',
-        to: ['hello@ai-xplorers.de', 'a.penaranda@ai-explorers.de', 'l.werksnis@ai-explorers.de'],
+        to: ['hello@ai-xplorers.de', 'a.penaranda@ai-xplorers.de', 'l.werksnis@ai-xplorers.de'],
         subject: `Neue Anfrage von ${name} (${company})`,
         reply_to: email,
         html: `

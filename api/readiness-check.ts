@@ -90,7 +90,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       body: JSON.stringify({
         from: 'AI Xplorers <hello@ai-xplorers.de>',
         to: [email],
-        bcc: ['hello@ai-xplorers.de', 'a.penaranda@ai-explorers.de', 'l.werksnis@ai-explorers.de'],
+        bcc: ['hello@ai-xplorers.de', 'a.penaranda@ai-xplorers.de', 'l.werksnis@ai-xplorers.de'],
         reply_to: 'hello@ai-xplorers.de',
         subject: `${firstName}, Ihr persönliches KI-Readiness-Profil`,
         html: `
@@ -165,7 +165,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       },
       body: JSON.stringify({
         from: 'AI Xplorers Assessment <hello@ai-xplorers.de>',
-        to: ['hello@ai-xplorers.de', 'a.penaranda@ai-explorers.de', 'l.werksnis@ai-explorers.de'],
+        to: ['hello@ai-xplorers.de', 'a.penaranda@ai-xplorers.de', 'l.werksnis@ai-xplorers.de'],
         reply_to: email,
         subject: `📊 Neuer Readiness-Check: ${firstName} — ${dataLevel} / ${changeLevel} / ${processLevel}`,
         html: `
