@@ -4,12 +4,30 @@ interface TrustSectionProps {
   onOpenDatenschutz: () => void;
 }
 
+function loadGoogleAnalytics() {
+  const id = import.meta.env.VITE_GA_MEASUREMENT_ID;
+  if (!id) return;
+
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+  document.head.appendChild(script);
+
+  (window as any).dataLayer = (window as any).dataLayer || [];
+  function gtag(...args: any[]) { (window as any).dataLayer.push(args); }
+  (window as any).gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', id);
+}
+
 export default function TrustSection({ onOpenDatenschutz }: TrustSectionProps) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const consent = localStorage.getItem('cookie-consent');
-    if (!consent) {
+    if (consent === 'all') {
+      loadGoogleAnalytics();
+    } else if (!consent) {
       const timer = setTimeout(() => setVisible(true), 1500);
       return () => clearTimeout(timer);
     }
@@ -17,6 +35,9 @@ export default function TrustSection({ onOpenDatenschutz }: TrustSectionProps) {
 
   const handleConsent = (type: string) => {
     localStorage.setItem('cookie-consent', type);
+    if (type === 'all') {
+      loadGoogleAnalytics();
+    }
     setVisible(false);
   };
 
@@ -27,7 +48,7 @@ export default function TrustSection({ onOpenDatenschutz }: TrustSectionProps) {
       <div className="bg-card border-t border-border shadow-2xl shadow-black/50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground text-center sm:text-left">
-            Wir nutzen Cookies für eine bessere Nutzererfahrung.{' '}
+            Wir nutzen Cookies und Google Analytics für eine bessere Nutzererfahrung und zur Analyse des Datenverkehrs.{' '}
             <button onClick={onOpenDatenschutz} className="text-primary hover:underline">
               Datenschutzerklärung
             </button>
