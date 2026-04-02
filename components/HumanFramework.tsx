@@ -7,31 +7,31 @@ const pillars = [
     letter: 'H',
     title: 'Human-first',
     description:
-      'Bevor die erste KI-Lösung eingeführt wird, schaffen wir die richtige Grundlage: Wir verankern ein gemeinsames Verständnis von KI im Unternehmen, adressieren Vorbehalte im Team und sorgen dafür, dass Technologie als Unterstützung und nicht als Bedrohung wahrgenommen wird. KI-Transformation beginnt mit Menschen, nicht mit Software.',
+      'Bevor die erste KI-Lösung eingeführt wird, schaffen wir die richtige Grundlage: gemeinsames Verständnis, adressierte Vorbehalte, Technologie als Unterstützung. KI-Transformation beginnt mit Menschen.',
   },
   {
     letter: 'U',
     title: 'Understand',
     description:
-      'Wir analysieren systematisch, wie Ihr Unternehmen heute funktioniert — Prozesse, Abläufe, Informationsflüsse, Engpässe. Erst wenn wir wirklich verstehen, wo Zeit verloren geht und wo Potenzial brach liegt, können wir gezielt ansetzen. Kein Aktionismus, keine Standardlösungen — nur fundierte Klarheit.',
+      'Wir analysieren, wie Ihr Unternehmen heute funktioniert — Prozesse, Abläufe, Engpässe. Erst wenn wir verstehen, wo Zeit verloren geht, können wir gezielt ansetzen. So schaffen wir Lösungen, die Ihnen genau an den richtigen Stellen helfen.',
   },
   {
     letter: 'M',
     title: 'Map',
     description:
-      'Aus der Analyse entwickeln wir eine priorisierte Landkarte aller KI-Anwendungsfälle für Ihr Unternehmen. Wir unterscheiden Quick Wins, die sofort Wirkung zeigen, von strategischen Projekten mit langfristigem Impact. Sie wissen am Ende genau, was wann sinnvoll ist — und warum.',
+      'Wir entwickeln eine priorisierte Landkarte aller KI-Anwendungsfälle: Quick Wins mit sofortiger Wirkung und strategische Projekte mit langfristigem Impact. Damit sehen wir genau, was wann sinnvoll ist.',
   },
   {
     letter: 'A',
     title: 'Adapt',
     description:
-      'Theorie wird Praxis. Wir pilotieren die priorisierten Lösungen direkt in Ihrem Unternehmen, passen sie iterativ an Ihre Realität an und messen konkrete Ergebnisse. Kein Big-Bang-Ansatz — sondern schrittweise Einführung mit konstantem Feedback und direkter Anpassung.',
+      'Theorie wird Praxis. Wir pilotieren Lösungen direkt in Ihrem Unternehmen, passen sie iterativ an und messen konkrete Ergebnisse. Dadurch erfolgt eine schrittweise Einführung mit direktem Feedback.',
   },
   {
     letter: 'N',
     title: 'Navigate',
     description:
-      'KI ist kein Projekt mit Enddatum. Wir begleiten Sie dabei, erfolgreiche Lösungen auf weitere Bereiche auszuweiten, Ihr Team eigenständig zu befähigen und eine interne KI-Kompetenz aufzubauen, die langfristig trägt. Unser Ziel ist Ihre Unabhängigkeit.',
+      'KI ist kein Projekt mit Enddatum. Wir begleiten Sie dabei, Lösungen auszuweiten, Ihr Team zu befähigen und eine interne KI-Kompetenz aufzubauen, die langfristig trägt.',
   },
 ];
 
