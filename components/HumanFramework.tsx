@@ -70,7 +70,7 @@ export default function HumanFramework() {
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 {/* Big letter watermark */}
-                <span className="absolute -right-1 -top-2 select-none text-6xl font-extrabold text-primary/20">
+                <span className="absolute -right-1 -top-2 select-none text-6xl font-extrabold text-primary/60">
                   {pillar.letter}
                 </span>
 
