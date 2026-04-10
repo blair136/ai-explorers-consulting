@@ -8,14 +8,14 @@ const CHECK = (
 );
 
 const skills = [
-  'Eigene KI-Tools und Automatisierungen mit Claude Code entwickeln',
-  'Prompts strukturiert und präzise formulieren',
-  'Code verstehen, debuggen und gezielt verbessern',
-  'APIs und externe Services anbinden',
-  'Datenbanken einrichten und verwalten',
-  'Projekte von der Idee bis zum Launch begleiten',
-  'KI-Workflows in den Unternehmensalltag integrieren',
-  'Mit Claude Max effizient und sicher arbeiten',
+  'Ideen strukturiert ausarbeiten, schärfen und validieren',
+  'Ein digitales Produkt von der Idee bis zum Launch begleiten',
+  'Die Product Canvas als Werkzeug souverän einsetzen',
+  'Gutes Design erkennen, finden und gezielt anwenden',
+  'Erste funktionsfähige Apps mit Base44 bauen',
+  'Claude Code in der Claude App für komplexere Lösungen nutzen',
+  'APIs verstehen und externe Services einbinden',
+  'KI DSGVO-konform und sicher im Unternehmen einsetzen',
 ];
 
 const personas = [
@@ -40,31 +40,31 @@ const days = [
   {
     day: 'Tag 1',
     time: '09:00 – 17:00 Uhr',
-    title: 'Grundlagen & erste Projekte mit Claude Code',
-    subtitle: 'Verstehe, wie KI wirklich funktioniert — und baue dein erstes eigenes Tool.',
+    title: 'Von der Idee zum validierten Konzept',
+    subtitle: 'Bevor der erste Code entsteht, entsteht Klarheit: über die Idee, die Nutzer und den echten Mehrwert.',
     agenda: [
-      { type: 'Impulsvortrag', items: ['Was Claude Code ist und wie es sich von anderen KI-Tools unterscheidet', 'Wie du KI richtig steuerst — Mindset statt Magie', 'Grundprinzipien effektiver Prompts'] },
-      { type: 'Übungen', items: ['Erste Schritte in Claude Code', 'Eigene Prozesse und Ideen strukturieren', 'Prompts für konkrete Aufgaben entwickeln', 'Erstes Mini-Projekt aufsetzen'] },
+      { type: 'Impulsvortrag', items: ['Was ein digitales Produkt wirklich auszeichnet', 'In Lösungen denken statt in Features', 'Der Innovationsprozess — von Design Thinking bis Product Development'] },
+      { type: 'Methoden & Übungen', items: ['Ideen strukturiert ausarbeiten: How Might We, Problem Statements', 'Nutzer verstehen und Insights sammeln', 'Value Proposition entwickeln und schärfen', 'Product Canvas: MVP definieren und priorisieren', 'Annahmen identifizieren und gezielt validieren'] },
     ],
   },
   {
     day: 'Tag 2',
     time: '09:00 – 17:00 Uhr',
-    title: 'Claude Code in der Praxis',
-    subtitle: 'Komplexere Projekte realisieren, Fehler debuggen, APIs und Datenbanken einbinden.',
+    title: 'Design, erste Umsetzung & KI-Grundlagen',
+    subtitle: 'Gutes Design trifft auf erste funktionierende Produkte — mit Base44 vom Konzept zur App.',
     agenda: [
-      { type: 'Impulsvortrag', items: ['Projektstruktur und Workflows für professionelle Ergebnisse', 'APIs, Integrationen und externe Services', 'Datenbanken verstehen und einrichten', 'Claude Max optimal einsetzen'] },
-      { type: 'Übungen', items: ['Vollständiges Projekt mit API-Anbindung aufbauen', 'Fehler identifizieren und beheben', 'Code iterativ verbessern', 'Deployment und Launch vorbereiten'] },
+      { type: 'Impulsvortrag', items: ['Was gutes digitales Design ausmacht — Prinzipien und Quellen', 'Wo du Inspiration findest und wie du sie gezielt einsetzt (Mobbin, Dribbble, Style Guides)', 'KI & Datenschutz: DSGVO-konforme KI-Nutzung im Unternehmensalltag'] },
+      { type: 'Umsetzung & Übungen', items: ['Einführung in Base44 — schnell zum ersten funktionierenden Prototyp', 'Eigene App-Idee in Base44 umsetzen', 'Design-Entscheidungen begründen und verfeinern', 'API-Schnittstellen verstehen: Was sind APIs und wie bindet man sie ein?', 'Erste externe Daten und Services anbinden'] },
     ],
   },
   {
     day: 'Tag 3',
     time: '09:00 – 17:00 Uhr',
-    title: 'Dein Abschlussprojekt',
-    subtitle: 'Alle Teilnehmer realisieren ihr eigenes Projekt — begleitet durch unsere Experten.',
+    title: 'Claude Code & Abschlussprojekt',
+    subtitle: 'Der nächste Level: mit Claude Code in der Claude App komplexere Lösungen realisieren — und das eigene Projekt fertigstellen.',
     agenda: [
-      { type: 'Fortgeschrittenes', items: ['MCP Server Setup und Claude-Erweiterungen', 'Cheatcodes für produktives Arbeiten mit Claude', 'Qualitätssicherung und Best Practices', 'Q&A mit den Trainern'] },
-      { type: 'Abschlussprojekt', items: ['Projektskizze mit dem AI Xplorers Workbook', 'Umsetzung des eigenen Projekts', 'Team-Pitch und Feedback', 'Zertifikatsübergabe'] },
+      { type: 'Impulsvortrag', items: ['Einführung in Claude Code — wie es funktioniert und wann man es nutzt', 'Base44 vs. Claude Code: Was wann sinnvoll ist', 'Prompts für technische Umsetzung — anders als für Texte'] },
+      { type: 'Abschlussprojekt', items: ['Eigenes Projekt mit Claude Code weiterentwickeln oder vertiefen', 'Qualitätssicherung: Wie erkenne ich gute von schlechten KI-Outputs?', 'Abschlusspräsentation und Team-Pitch', 'Persönliche KI-Roadmap aus dem Workbook ableiten', 'Zertifikatsübergabe & Ausblick'] },
     ],
   },
 ];
@@ -95,18 +95,23 @@ const dates = [
 
 const tools = [
   {
+    name: 'Base44',
+    description: 'Der schnellste Weg vom Konzept zur ersten funktionierenden App. Kein Setup, kein Code — einfach loslegen und iterieren.',
+    tag: 'Tag 2',
+  },
+  {
     name: 'Claude Code',
-    description: 'Das Terminal-basierte KI-Tool von Anthropic. Du arbeitest direkt mit dem Modell — kein GUI-Layer, maximale Kontrolle.',
-    tag: 'Kernwerkzeug',
+    description: 'Für komplexere Lösungen: Claude Code direkt in der Claude App. Mehr Kontrolle, mehr Möglichkeiten — der nächste Schritt nach Base44.',
+    tag: 'Tag 3',
   },
   {
     name: 'Claude Max',
-    description: 'Inklusive im Trainingspaket. Das leistungsstärkste Claude-Abo — höhere Limits, schnellere Antworten, mehr Kontext.',
+    description: 'Im Trainingspaket inklusive. Das leistungsstärkste Claude-Abo — höhere Limits, schnellere Antworten, mehr Kontext für komplexe Projekte.',
     tag: 'Im Paket enthalten',
   },
   {
     name: 'AI Xplorers Workbook',
-    description: 'Dein strukturierter Begleiter durch alle drei Tage. Frameworks, Vorlagen und deine persönliche KI-Roadmap — zum Mitnehmen.',
+    description: 'Dein strukturierter Begleiter: Product Canvas, Design-Frameworks, Validierungs-Templates und deine persönliche KI-Roadmap — zum Mitnehmen.',
     tag: 'Zum Mitnehmen',
   },
 ];
@@ -388,7 +393,7 @@ export default function Training() {
               <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">Was du bekommst</h2>
             </div>
           </BlurFade>
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {tools.map((tool, i) => (
               <BlurFade key={tool.name} delay={0.1 + i * 0.08} inView>
                 <div className="bg-card border border-border rounded-2xl p-7 h-full">
