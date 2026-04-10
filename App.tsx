@@ -2,6 +2,7 @@ import React from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Training from './components/Training';
 import LogoCloud from './components/LogoCloud';
 import Services from './components/Services';
 import ProcessBlock from './components/ProcessBlock';
@@ -47,6 +48,10 @@ function App() {
         </LegalModal>
       </div>
     );
+  }
+
+  if (currentPath === '#training') {
+    return <Training />;
   }
 
   return (
