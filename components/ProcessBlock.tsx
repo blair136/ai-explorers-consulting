@@ -35,12 +35,10 @@ export default function ProcessBlock() {
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center mb-16 lg:mb-20">
           <BlurFade delay={0.1} inView>
-            <span className="inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium tracking-wider text-primary mb-6">
-              UNSER PROZESS
-            </span>
+            <p className="font-mono text-xs text-primary tracking-widest uppercase mb-4">Unser Prozess</p>
           </BlurFade>
           <BlurFade delay={0.2} inView>
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
               So arbeiten wir
             </h2>
           </BlurFade>
@@ -74,7 +72,7 @@ export default function ProcessBlock() {
                 </span>
 
                 {/* Title */}
-                <h3 className="mt-4 sm:mt-5 text-lg sm:text-xl font-semibold text-white">
+                <h3 className="mt-4 sm:mt-5 text-lg sm:text-xl font-semibold text-foreground">
                   {step.title}{' '}
                   {step.subtitle && (
                     <span className="text-base font-normal text-primary">
