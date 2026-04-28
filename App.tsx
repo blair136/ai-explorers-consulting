@@ -3,6 +3,7 @@ import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Training from './components/Training';
+import HumanFrameworkPage from './components/HumanFrameworkPage';
 import LogoCloud from './components/LogoCloud';
 import Services from './components/Services';
 import ProcessBlock from './components/ProcessBlock';
@@ -52,6 +53,10 @@ function App() {
 
   if (currentPath === '#training') {
     return <Training />;
+  }
+
+  if (currentPath === '#framework') {
+    return <HumanFrameworkPage />;
   }
 
   return (
