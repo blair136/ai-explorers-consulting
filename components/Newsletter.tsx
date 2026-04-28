@@ -28,17 +28,18 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="py-24 lg:py-32">
+    <section className="py-24 lg:py-32 bg-[oklch(0.10_0.015_260)]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <BlurFade delay={0} inView>
-          <div className="relative bg-card rounded-3xl p-6 sm:p-10 lg:p-16 w-full border border-border overflow-hidden">
+          <div className="relative bg-primary/[0.12] rounded-3xl p-6 sm:p-10 lg:p-16 w-full border border-primary/25 overflow-hidden">
             <ShineBorder shineColor={["#5eead4", "#06b6d4", "#14b8a6"]} />
+            {/* Teal glow */}
+            <div className="pointer-events-none absolute -top-20 -right-20 w-64 h-64 rounded-full bg-primary/20 blur-[80px]" />
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-6">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                <p className="font-mono text-xs text-primary tracking-widest uppercase mb-5">
                   Wöchentliches KI-Briefing
-                </div>
+                </p>
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground mb-4">
                   <span className="gradient-text">KI-Kompass</span> für den Mittelstand
                 </h2>

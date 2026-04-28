@@ -25,7 +25,7 @@ const steps = [
 
 export default function ProcessBlock() {
   return (
-    <section id="process" className="relative py-24 lg:py-32">
+    <section id="process" className="relative py-24 lg:py-32 bg-[oklch(0.10_0.015_260)]">
       {/* Subtle background glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[600px] w-[900px] rounded-full bg-primary/[0.03] blur-[120px]" />

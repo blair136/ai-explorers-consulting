@@ -74,18 +74,19 @@ function App() {
         <FAQ />
 
         {/* Contact CTA Section */}
-        <section id="contact" className="py-24 lg:py-32 relative">
-          <div className="absolute inset-0 mesh-gradient -z-10" />
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <section id="contact" className="py-24 lg:py-32 relative bg-primary overflow-hidden">
+          {/* Subtle noise overlay for depth */}
+          <div className="pointer-events-none absolute inset-0 opacity-[0.06]" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")"}} />
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
             <div className="max-w-3xl mx-auto text-center">
-              <p className="text-primary font-semibold text-sm mb-3 tracking-wide uppercase">Kontakt</p>
-              <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground mb-4">
-                Bereit für Ihre <span className="gradient-text">KI-Roadmap</span>?
+              <p className="font-mono text-xs text-primary-foreground/60 tracking-widest uppercase mb-3">Kontakt</p>
+              <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-primary-foreground mb-4">
+                Bereit für Ihre <span className="font-light italic">KI-Roadmap?</span>
               </h2>
-              <p className="text-muted-foreground text-lg mb-12 max-w-xl mx-auto">
+              <p className="text-primary-foreground/70 text-lg mb-12 max-w-xl mx-auto">
                 In einem kostenlosen Erstgespräch zeigen wir Ihnen Ihre konkreten nächsten Schritte — zugeschnitten auf Ihr Unternehmen.
               </p>
-              <ContactForm />
+              <ContactForm dark />
             </div>
           </div>
         </section>
