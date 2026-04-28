@@ -100,21 +100,23 @@ const services = [
 export default function Services() {
   return (
     <section id="services" className="relative py-24 lg:py-32">
-      {/* Subtle background glow */}
+      {/* Teal glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[600px] w-[900px] rounded-full bg-primary/[0.03] blur-[120px]" />
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[700px] w-[1000px] rounded-full bg-primary/[0.07] blur-[140px]" />
       </div>
 
       <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center mb-16 lg:mb-20">
           <BlurFade delay={0.1} inView>
-            <span className="inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium tracking-wider text-primary mb-6">
-              UNSERE LEISTUNGEN
-            </span>
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <span className="w-2 h-2 bg-primary rotate-45 block" />
+              <span className="font-mono text-xs text-primary tracking-widest uppercase">Unsere Leistungen</span>
+              <span className="w-2 h-2 bg-primary rotate-45 block" />
+            </div>
           </BlurFade>
           <BlurFade delay={0.2} inView>
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
               Technologie trifft{' '}
               <span className="gradient-text">wirklichen Nutzen</span>
             </h2>
@@ -132,8 +134,8 @@ export default function Services() {
           {services.map((service, index) => (
             <BlurFade key={service.title} delay={0.2 + index * 0.1} inView>
               <MagicCard
-                className="group relative h-full rounded-2xl border border-white/[0.08] bg-[#0a0a0a] p-6 transition-all duration-500 hover:border-primary/20 glow-card"
-                gradientColor="rgba(94,234,212,0.08)"
+                className="group relative h-full rounded-2xl border border-border bg-card p-6 transition-all duration-500 hover:border-primary/30 glow-card"
+                gradientColor="rgba(94,234,212,0.10)"
               >
                 <div className="flex flex-col gap-4">
                   {/* Icon */}
