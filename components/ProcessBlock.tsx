@@ -46,35 +46,35 @@ export default function ProcessBlock() {
         <div className="relative grid grid-cols-1 gap-5 md:grid-cols-3">
           {/* Connecting line (desktop only) */}
           <div className="pointer-events-none absolute top-1/2 left-[16.67%] right-[16.67%] hidden -translate-y-1/2 md:block">
-            <div className="h-px w-full bg-gradient-to-r from-primary-foreground/0 via-primary-foreground/30 to-primary-foreground/0" />
+            <div className="h-px w-full bg-gradient-to-r from-primary-foreground/0 via-primary-foreground/50 to-primary-foreground/0" />
             <div className="absolute left-1/3 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              <div className="h-2 w-2 rotate-45 border-r border-t border-primary-foreground/40" />
+              <div className="h-2 w-2 rotate-45 border-r border-t border-primary-foreground/60" />
             </div>
             <div className="absolute left-2/3 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              <div className="h-2 w-2 rotate-45 border-r border-t border-primary-foreground/40" />
+              <div className="h-2 w-2 rotate-45 border-r border-t border-primary-foreground/60" />
             </div>
           </div>
 
           {steps.map((step, index) => (
             <BlurFade key={step.number} delay={0.2 + index * 0.15} inView>
-              <div className="relative bg-primary-foreground/10 border border-primary-foreground/20 rounded-2xl p-5 sm:p-7 backdrop-blur-sm hover:bg-primary-foreground/15 transition-all duration-300">
+              <div className="relative bg-background border border-border rounded-2xl p-5 sm:p-7 hover:border-primary/30 transition-all duration-300 h-full">
                 {/* Step Number */}
-                <span className="text-4xl sm:text-5xl font-bold leading-none text-primary-foreground/30">
+                <span className="gradient-text text-4xl sm:text-5xl font-bold leading-none">
                   {step.number}
                 </span>
 
                 {/* Title */}
-                <h3 className="mt-4 sm:mt-5 text-lg sm:text-xl font-semibold text-primary-foreground">
+                <h3 className="mt-4 sm:mt-5 text-lg sm:text-xl font-semibold text-foreground">
                   {step.title}{' '}
                   {step.subtitle && (
-                    <span className="text-base font-normal text-primary-foreground/60">
+                    <span className="text-base font-normal text-primary">
                       {step.subtitle}
                     </span>
                   )}
                 </h3>
 
                 {/* Description */}
-                <p className="mt-3 text-sm leading-relaxed text-primary-foreground/70">
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   {step.description}
                 </p>
               </div>
