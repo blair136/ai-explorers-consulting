@@ -32,7 +32,7 @@ export default function Hero() {
           <BlurFade delay={0.05}>
             <h1 className="text-[1.75rem] leading-[1.15] font-extrabold tracking-tight sm:text-4xl md:text-5xl lg:text-[3.5rem] lg:leading-[1.1]">
               Ihre Fachkräfte verlieren täglich Stunden{' '}
-              <span className="gradient-text italic font-light">an Aufgaben, die KI heute übernehmen kann.</span>
+              <span className="gradient-italic">an Aufgaben, die KI heute übernehmen kann.</span>
             </h1>
           </BlurFade>
 

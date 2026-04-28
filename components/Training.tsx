@@ -131,7 +131,7 @@ export default function Training() {
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1] mb-6">
                   Entwickle eigene<br />
                   KI-Tools —{' '}
-                  <span className="gradient-text font-light italic">begleitet durch</span>{' '}
+                  <span className="gradient-italic">begleitet durch</span>{' '}
                   unsere Experten.
                 </h1>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-lg">
@@ -204,7 +204,7 @@ export default function Training() {
             <div>
               <Label>Das Training</Label>
               <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight mb-6">
-                KI-Coding: Vom Prompt<br />zum fertigen <span className="gradient-text italic font-light">Produkt.</span>
+                KI-Coding: Vom Prompt<br />zum fertigen <span className="gradient-italic">Produkt.</span>
               </h2>
               <p className="text-muted-foreground text-lg leading-relaxed mb-4">
                 Viele glauben, ein paar Prompts reichen — und schon entsteht Software. Die Realität sieht anders aus. Damit aus einer Idee ein echtes, funktionierendes Tool wird, braucht es Struktur, die richtigen Workflows und ein tiefes Verständnis dafür, wie man KI wirklich steuert.
@@ -236,7 +236,7 @@ export default function Training() {
           <BlurFade delay={0.1} inView>
             <Label>Zielgruppe</Label>
             <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight mb-10">
-              Für wen ist das Training <span className="gradient-text italic font-light">geeignet?</span>
+              Für wen ist das Training <span className="gradient-italic">geeignet?</span>
             </h2>
           </BlurFade>
           <div className="grid md:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden">
@@ -259,7 +259,7 @@ export default function Training() {
             <div className="lg:sticky lg:top-24">
               <Label>Programm</Label>
               <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight">
-                Ablauf des<br /><span className="gradient-text italic font-light">Trainings</span>
+                Ablauf des<br /><span className="gradient-italic">Trainings</span>
               </h2>
               <p className="text-muted-foreground mt-4 leading-relaxed">
                 Drei intensive Tage — von der Idee zur fertigen App. Jeder Tag baut auf dem vorherigen auf.
@@ -309,21 +309,23 @@ export default function Training() {
       </section>
 
       {/* ── Tools ── */}
-      <section className="py-20 lg:py-28 border-t border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="py-20 lg:py-28 bg-primary relative overflow-hidden">
+        {/* Noise texture */}
+        <div className="pointer-events-none absolute inset-0 opacity-[0.05]" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")"}} />
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <BlurFade delay={0.1} inView>
-            <Label>Ausstattung</Label>
-            <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight mb-10">
-              Welche Tools kommen <span className="gradient-text italic font-light">zum Einsatz?</span>
+            <p className="font-mono text-xs text-primary-foreground/60 tracking-widest uppercase mb-4">Ausstattung</p>
+            <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-primary-foreground mb-10">
+              Welche Tools kommen <span className="font-light italic text-primary-foreground/75">zum Einsatz?</span>
             </h2>
           </BlurFade>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-primary-foreground/20 rounded-2xl overflow-hidden">
             {tools.map((tool, i) => (
               <BlurFade key={tool.name} delay={0.1 + i * 0.07} inView>
-                <div className="bg-card p-7 h-full">
-                  <p className="font-mono text-xs text-primary tracking-widest uppercase mb-3">{tool.tag}</p>
-                  <h3 className="text-xl font-bold mb-2">{tool.name}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{tool.description}</p>
+                <div className="bg-primary-foreground/10 hover:bg-primary-foreground/15 transition-colors p-7 h-full">
+                  <p className="font-mono text-xs text-primary-foreground/55 tracking-widest uppercase mb-3">{tool.tag}</p>
+                  <h3 className="text-xl font-bold text-primary-foreground mb-2">{tool.name}</h3>
+                  <p className="text-primary-foreground/70 text-sm leading-relaxed">{tool.description}</p>
                 </div>
               </BlurFade>
             ))}
@@ -337,7 +339,7 @@ export default function Training() {
           <BlurFade delay={0.1} inView>
             <Label>Trainer</Label>
             <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight mb-12">
-              Deine <span className="gradient-text italic font-light">Experten</span>
+              Deine <span className="gradient-italic">Experten</span>
             </h2>
           </BlurFade>
           <div className="space-y-12">
@@ -369,7 +371,7 @@ export default function Training() {
             <div className="lg:sticky lg:top-24">
               <Label>Termine</Label>
               <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight mb-4">
-                Alle Trainings<span className="gradient-text italic font-light">termine</span>
+                Alle Trainings<span className="gradient-italic">termine</span>
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
                 Mit deinem Team dabei? Ab 3 Personen bieten wir Gruppenrabatt.{' '}
@@ -419,7 +421,7 @@ export default function Training() {
           <BlurFade delay={0.1} inView>
             <Label>Warum AI Xplorers</Label>
             <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight mb-10">
-              Warum mit uns <span className="gradient-text italic font-light">lernen?</span>
+              Warum mit uns <span className="gradient-italic">lernen?</span>
             </h2>
           </BlurFade>
           <div className="grid md:grid-cols-3 gap-8">
@@ -443,7 +445,7 @@ export default function Training() {
             <div>
               <Label>Für Teams</Label>
               <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight mb-4">
-                Hol dir Claude Code Skills<br />in <span className="gradient-text italic font-light">dein Team.</span>
+                Hol dir Claude Code Skills<br />in <span className="gradient-italic">dein Team.</span>
               </h2>
               <p className="text-muted-foreground text-lg leading-relaxed mb-8">
                 Wir bieten das Training auch als Inhouse-Format an — remote oder direkt bei euch. Das Programm wird individuell auf euren Arbeitsalltag und eure Use Cases zugeschnitten.
@@ -473,7 +475,7 @@ export default function Training() {
           <BlurFade delay={0.1} inView>
             <Label>Bereit loslegen?</Label>
             <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 max-w-2xl leading-tight">
-              Bereit für dein erstes <span className="gradient-text italic font-light">eigenes KI-Tool?</span>
+              Bereit für dein erstes <span className="gradient-italic">eigenes KI-Tool?</span>
             </h2>
             <p className="text-muted-foreground text-lg mb-10 max-w-xl">
               Sprich mit Lennart oder Andres — kostenlos und unverbindlich. Wir finden gemeinsam heraus, ob das Training zu dir passt.

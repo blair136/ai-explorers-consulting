@@ -238,7 +238,7 @@ export default function HumanFrameworkPage() {
                 </div>
                 <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[0.95] mb-8">
                   KI im Mittelstand<br />
-                  wird <span className="gradient-text italic font-light">verständlich.</span><br />
+                  wird <span className="gradient-italic">verständlich.</span><br />
                   Schritt für Schritt.
                 </h1>
                 <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
@@ -480,7 +480,7 @@ export default function HumanFrameworkPage() {
           <BlurFade delay={0.1} inView>
             <div>
               <h2 className="text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-6">
-                Bereit für ein <span className="gradient-text italic font-light">ehrliches</span> Erstgespräch?
+                Bereit für ein <span className="gradient-italic">ehrliches</span> Erstgespräch?
               </h2>
               <p className="text-muted-foreground text-lg leading-relaxed max-w-lg">
                 45 Minuten, kostenfrei und unverbindlich. Wir hören zu, ordnen ein und sagen Ihnen, ob das HUMAN Framework zu Ihrem Unternehmen passt. Wenn nicht, sagen wir es Ihnen.
