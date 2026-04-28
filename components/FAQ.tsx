@@ -35,11 +35,7 @@ export default function FAQ() {
       <div className="max-w-3xl mx-auto px-6 lg:px-8">
         <BlurFade delay={0} inView>
           <div className="text-center mb-14">
-            <div className="flex items-center justify-center gap-3 mb-5">
-              <span className="w-2 h-2 bg-primary rotate-45 block" />
-              <span className="font-mono text-xs text-primary tracking-widest uppercase">FAQ</span>
-              <span className="w-2 h-2 bg-primary rotate-45 block" />
-            </div>
+            <p className="text-primary font-semibold text-sm mb-3 tracking-wide uppercase">FAQ</p>
             <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground mb-4">
               Häufige Fragen
             </h2>

@@ -73,26 +73,19 @@ function App() {
         <Newsletter />
         <FAQ />
 
-        {/* Contact CTA Section — full teal */}
-        <section id="contact" className="py-24 lg:py-32 relative overflow-hidden bg-primary">
-          {/* Watermark */}
-          <p className="absolute bottom-0 right-0 text-[18vw] font-extrabold text-primary-foreground/5 leading-none select-none pointer-events-none tracking-tighter">
-            HUMAN.
-          </p>
-          <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Contact CTA Section */}
+        <section id="contact" className="py-24 lg:py-32 relative">
+          <div className="absolute inset-0 mesh-gradient -z-10" />
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-center">
-              <div className="flex items-center justify-center gap-3 mb-5">
-                <span className="w-2 h-2 bg-primary-foreground/40 rotate-45 block" />
-                <span className="font-mono text-xs text-primary-foreground/70 tracking-widest uppercase">Kontakt</span>
-                <span className="w-2 h-2 bg-primary-foreground/40 rotate-45 block" />
-              </div>
-              <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-primary-foreground mb-4">
-                Bereit für Ihre KI-Roadmap?
+              <p className="text-primary font-semibold text-sm mb-3 tracking-wide uppercase">Kontakt</p>
+              <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground mb-4">
+                Bereit für Ihre <span className="gradient-text">KI-Roadmap</span>?
               </h2>
-              <p className="text-primary-foreground/80 text-lg mb-12 max-w-xl mx-auto">
+              <p className="text-muted-foreground text-lg mb-12 max-w-xl mx-auto">
                 In einem kostenlosen Erstgespräch zeigen wir Ihnen Ihre konkreten nächsten Schritte — zugeschnitten auf Ihr Unternehmen.
               </p>
-              <ContactForm dark />
+              <ContactForm />
             </div>
           </div>
         </section>

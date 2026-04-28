@@ -20,16 +20,11 @@ const teamMembers = [
 
 export default function TeamSection() {
   return (
-    <section className="relative py-24 sm:py-32 overflow-hidden bg-primary/[0.06]">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute left-1/4 top-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/[0.08] blur-[120px]" />
-      </div>
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="relative py-24 sm:py-32 overflow-hidden">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <BlurFade delay={0.1} inView>
-          <div className="flex items-center justify-center gap-3 mb-5">
-            <span className="w-2 h-2 bg-primary rotate-45 block" />
-            <span className="font-mono text-xs text-primary tracking-widest uppercase">Unser Team</span>
-            <span className="w-2 h-2 bg-primary rotate-45 block" />
+          <div className="flex justify-center mb-4">
+            <p className="text-sm font-semibold uppercase tracking-widest text-primary">Unser Team</p>
           </div>
         </BlurFade>
 
@@ -49,7 +44,7 @@ export default function TeamSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {teamMembers.map((member, index) => (
             <BlurFade key={member.name} delay={0.3 + index * 0.15} inView>
-              <div className="bg-card/80 backdrop-blur border border-primary/20 rounded-2xl p-6 sm:p-8 flex flex-col items-center text-center h-full hover:border-primary/40 transition-colors">
+              <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 flex flex-col items-center text-center h-full">
                 <div className="w-32 h-32 rounded-full overflow-hidden mb-6 ring-2 ring-primary/20 ring-offset-2 ring-offset-background">
                   <img
                     src={member.image}

@@ -109,11 +109,7 @@ export default function Services() {
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center mb-16 lg:mb-20">
           <BlurFade delay={0.1} inView>
-            <div className="flex items-center justify-center gap-3 mb-5">
-              <span className="w-2 h-2 bg-primary rotate-45 block" />
-              <span className="font-mono text-xs text-primary tracking-widest uppercase">Unsere Leistungen</span>
-              <span className="w-2 h-2 bg-primary rotate-45 block" />
-            </div>
+            <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-5">Unsere Leistungen</p>
           </BlurFade>
           <BlurFade delay={0.2} inView>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
