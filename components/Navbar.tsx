@@ -13,7 +13,8 @@ export default function Navbar() {
 
   const navLinks = [
     { label: 'Leistungen', href: '#services' },
-    { label: 'HUMAN Framework', href: '#human' },
+    { label: 'Framework', href: '#framework' },
+    { label: 'Training', href: '#training' },
     { label: 'FAQ', href: '#faq' },
   ];
 
