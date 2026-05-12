@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BlurFade } from './ui/blur-fade';
+import Navbar from './Navbar';
 
 /* ─── DATA ─────────────────────────────────────────────────────────────── */
 
@@ -199,24 +200,7 @@ export default function HumanFrameworkPage() {
     <div className="min-h-screen bg-background text-foreground">
 
       {/* ── Navbar ── */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
-          <a href="#" onClick={() => { window.location.hash = ''; }} className="flex items-center">
-            <img src="/logos/1.png" alt="AI Xplorers" className="h-8 w-auto" />
-          </a>
-          <div className="hidden sm:flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#framework" className="hover:text-primary transition-colors">Framework</a>
-            <a href="#case"      className="hover:text-primary transition-colors">Praxisbeispiel</a>
-            <a href="#faq"       className="hover:text-primary transition-colors">FAQ</a>
-          </div>
-          <a
-            href="#cta"
-            className="px-4 py-2 bg-primary text-primary-foreground text-sm font-semibold rounded-lg hover:bg-primary/90 transition-colors"
-          >
-            Erstgespräch
-          </a>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* ── Hero ── */}
       <section className="relative pt-32 pb-24 lg:pt-44 lg:pb-32 overflow-hidden">

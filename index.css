@@ -183,7 +183,9 @@ html {
 }
 
 /* Italic variant — inline-block + padding prevents background-clip:text from
-   clipping the italic slant/descenders that extend beyond the line box */
+   clipping the italic slant/descenders that extend beyond the line box.
+   Negative margin-bottom cancels the layout impact of the bottom padding
+   so surrounding spacing stays unchanged. */
 .gradient-italic {
   background: linear-gradient(135deg, oklch(0.82 0.14 170), oklch(0.75 0.16 200), oklch(0.78 0.13 150));
   -webkit-background-clip: text;
@@ -192,7 +194,9 @@ html {
   font-style: italic;
   font-weight: 300;
   display: inline-block;
-  padding-bottom: 0.14em;
+  /* right: italic slant overhangs right edge; bottom: descenders (g, y…) */
+  padding: 0.04em 0.1em 0.24em 0;
+  margin-bottom: -0.24em;
   line-height: inherit;
 }
 

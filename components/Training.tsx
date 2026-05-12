@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BlurFade } from './ui/blur-fade';
+import Navbar from './Navbar';
 
 const CHECK = (
   <svg className="w-4 h-4 text-primary shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
@@ -101,20 +102,7 @@ export default function Training() {
     <div className="min-h-screen bg-background text-foreground">
 
       {/* ── Navbar ── */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
-          <a href="#" onClick={() => { window.location.hash = ''; }}>
-            <img src="/logos/1.png" alt="AI Xplorers" className="h-8 w-auto" />
-          </a>
-          <div className="hidden sm:flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#training-agenda" className="hover:text-primary transition-colors">Programm</a>
-            <a href="#training-booking" className="hover:text-primary transition-colors">Termine</a>
-          </div>
-          <a href="#training-booking" className="px-4 py-2 bg-primary text-primary-foreground text-sm font-semibold rounded-lg hover:bg-primary/90 transition-colors">
-            Jetzt buchen
-          </a>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* ── Hero ── */}
       <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
