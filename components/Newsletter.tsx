@@ -2,11 +2,51 @@ import React, { useState } from 'react';
 import { BlurFade } from '../components/ui/blur-fade';
 import { ShimmerButton } from '../components/ui/shimmer-button';
 import { ShineBorder } from '../components/ui/shine-border';
+import { useT } from '../lib/language';
+
+const de = {
+  label: 'Wöchentliches KI-Briefing',
+  h2_gradient: 'KI-Kompass',
+  h2_rest: 'für den Mittelstand',
+  subtitle: 'Erhalten Sie jeden Dienstag eine fundierte Einordnung aktueller KI-Entwicklungen und Impulse für Ihre Organisationsentwicklung.',
+  bullets: [
+    'Jeden Dienstag: eine konkrete KI-Entwicklung, eingeordnet für den Mittelstand',
+    'Praxisbeispiele aus echten Automatisierungsprojekten',
+    'Nur was wirklich relevant für Ihr Unternehmen ist',
+  ],
+  namePlaceholder: 'Ihr Name',
+  emailPlaceholder: 'E-Mail-Adresse',
+  submitBtn: 'Jetzt kostenlos abonnieren',
+  privacy: 'Mit der Anmeldung akzeptieren Sie unsere Datenschutzbestimmungen. Abmeldung jederzeit möglich.',
+  successTitle: 'Vielen Dank!',
+  successText: 'Sie sind jetzt für den KI-Kompass angemeldet.',
+  errorAlert: 'Es gab ein Problem. Bitte versuchen Sie es erneut.',
+};
+
+const en = {
+  label: 'Weekly AI Briefing',
+  h2_gradient: 'AI Compass',
+  h2_rest: 'for SMEs',
+  subtitle: 'Receive every Tuesday a well-founded overview of current AI developments and impulses for your organisational development.',
+  bullets: [
+    'Every Tuesday: one concrete AI development, contextualised for SMEs',
+    'Practical examples from real automation projects',
+    'Only what is truly relevant for your business',
+  ],
+  namePlaceholder: 'Your name',
+  emailPlaceholder: 'Email address',
+  submitBtn: 'Subscribe for free',
+  privacy: 'By subscribing you accept our privacy policy. Unsubscribe at any time.',
+  successTitle: 'Thank you!',
+  successText: 'You are now subscribed to the AI Compass.',
+  errorAlert: 'There was a problem. Please try again.',
+};
 
 export default function Newsletter() {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [status, setStatus] = useState<'idle' | 'success' | 'loading'>('idle');
+  const t = useT(de, en);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,7 +63,7 @@ export default function Newsletter() {
       setName('');
     } catch {
       setStatus('idle');
-      alert('Es gab ein Problem. Bitte versuchen Sie es erneut.');
+      alert(t.errorAlert);
     }
   };
 
@@ -38,17 +78,16 @@ export default function Newsletter() {
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div>
                 <p className="font-mono text-xs text-primary tracking-widest uppercase mb-5">
-                  Wöchentliches KI-Briefing
+                  {t.label}
                 </p>
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground mb-4">
-                  <span className="gradient-text">KI-Kompass</span> für den Mittelstand
+                  <span className="gradient-text">{t.h2_gradient}</span> {t.h2_rest}
                 </h2>
                 <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                  Erhalten Sie jeden Dienstag eine fundierte Einordnung aktueller KI-Entwicklungen
-                  und Impulse für Ihre Organisationsentwicklung.
+                  {t.subtitle}
                 </p>
                 <ul className="space-y-3">
-                  {['Jeden Dienstag: eine konkrete KI-Entwicklung, eingeordnet für den Mittelstand', 'Praxisbeispiele aus echten Automatisierungsprojekten', 'Nur was wirklich relevant für Ihr Unternehmen ist'].map((item, i) => (
+                  {t.bullets.map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-foreground">
                       <svg className="w-5 h-5 text-primary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -67,14 +106,14 @@ export default function Newsletter() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-foreground mb-1">Vielen Dank!</h3>
-                    <p className="text-muted-foreground">Sie sind jetzt für den KI-Kompass angemeldet.</p>
+                    <h3 className="text-xl font-bold text-foreground mb-1">{t.successTitle}</h3>
+                    <p className="text-muted-foreground">{t.successText}</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <input
                       type="text"
-                      placeholder="Ihr Name"
+                      placeholder={t.namePlaceholder}
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required
@@ -82,7 +121,7 @@ export default function Newsletter() {
                     />
                     <input
                       type="email"
-                      placeholder="E-Mail-Adresse"
+                      placeholder={t.emailPlaceholder}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
@@ -100,7 +139,7 @@ export default function Newsletter() {
                         <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                       ) : (
                         <>
-                          Jetzt kostenlos abonnieren
+                          {t.submitBtn}
                           <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                           </svg>
@@ -108,7 +147,7 @@ export default function Newsletter() {
                       )}
                     </ShimmerButton>
                     <p className="text-xs text-muted-foreground text-center">
-                      Mit der Anmeldung akzeptieren Sie unsere Datenschutzbestimmungen. Abmeldung jederzeit möglich.
+                      {t.privacy}
                     </p>
                   </form>
                 )}

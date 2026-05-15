@@ -19,12 +19,14 @@ import LegalModal from './components/LegalModal';
 import Impressum from './components/Impressum';
 import Datenschutz from './components/Datenschutz';
 import NewsletterLanding from './components/NewsletterLanding';
+import { LanguageProvider, useLang } from './lib/language';
 
 type LegalType = 'impressum' | 'datenschutz' | null;
 
-function App() {
+function AppInner() {
   const [legalView, setLegalView] = React.useState<LegalType>(null);
   const [currentPath, setCurrentPath] = React.useState(window.location.hash || '#');
+  const { lang } = useLang();
 
   React.useEffect(() => {
     const handleHashChange = () => {
@@ -59,6 +61,13 @@ function App() {
     return <HumanFrameworkPage />;
   }
 
+  const contactLabel = lang === 'en' ? 'Contact' : 'Kontakt';
+  const contactH2de = <>Bereit für Ihre <span className="font-light italic">KI-Roadmap?</span></>;
+  const contactH2en = <>Ready for your <span className="font-light italic">AI Roadmap?</span></>;
+  const contactDesc = lang === 'en'
+    ? 'In a free discovery call we show you your concrete next steps — tailored to your company.'
+    : 'In einem kostenlosen Erstgespräch zeigen wir Ihnen Ihre konkreten nächsten Schritte — zugeschnitten auf Ihr Unternehmen.';
+
   return (
     <div className="min-h-screen bg-background selection:bg-primary/10 selection:text-primary">
       <Navbar />
@@ -79,12 +88,12 @@ function App() {
           <div className="pointer-events-none absolute inset-0 opacity-[0.06]" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")"}} />
           <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
             <div className="max-w-3xl mx-auto text-center">
-              <p className="font-mono text-xs text-primary-foreground/60 tracking-widest uppercase mb-3">Kontakt</p>
+              <p className="font-mono text-xs text-primary-foreground/60 tracking-widest uppercase mb-3">{contactLabel}</p>
               <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-primary-foreground mb-4">
-                Bereit für Ihre <span className="font-light italic">KI-Roadmap?</span>
+                {lang === 'en' ? contactH2en : contactH2de}
               </h2>
               <p className="text-primary-foreground/70 text-lg mb-12 max-w-xl mx-auto">
-                In einem kostenlosen Erstgespräch zeigen wir Ihnen Ihre konkreten nächsten Schritte — zugeschnitten auf Ihr Unternehmen.
+                {contactDesc}
               </p>
               <ContactForm dark />
             </div>
@@ -102,6 +111,14 @@ function App() {
 
       <Analytics />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <LanguageProvider>
+      <AppInner />
+    </LanguageProvider>
   );
 }
 

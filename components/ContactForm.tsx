@@ -1,5 +1,40 @@
 import React, { useState } from 'react';
 import { ShimmerButton } from '../components/ui/shimmer-button';
+import { useT } from '../lib/language';
+
+const de = {
+  labelName: 'Name',
+  labelEmail: 'E-Mail',
+  labelCompany: 'Unternehmen / Website',
+  labelChallenge: 'Ihre größte Herausforderung',
+  placeholderName: 'Ihr Name',
+  placeholderEmail: 'name@firma.de',
+  placeholderCompany: 'Ihre Firma GmbH',
+  placeholderChallenge: 'Welchen Prozess möchten Sie automatisieren?',
+  btnDark: 'Jetzt Erstgespräch sichern',
+  btnLight: 'Jetzt Strategie-Session sichern',
+  privacy: 'Ihre Daten sind sicher & 100% DSGVO-konform.',
+  successH3: 'Anfrage gesendet!',
+  successP: 'Wir melden uns innerhalb von 24 Stunden bei Ihnen.',
+  errorAlert: 'Es gab ein Problem. Bitte versuchen Sie es erneut.',
+};
+
+const en = {
+  labelName: 'Name',
+  labelEmail: 'Email',
+  labelCompany: 'Company / Website',
+  labelChallenge: 'Your biggest challenge',
+  placeholderName: 'Your name',
+  placeholderEmail: 'name@company.com',
+  placeholderCompany: 'Your Company Ltd',
+  placeholderChallenge: 'Which process would you like to automate?',
+  btnDark: 'Book your discovery call',
+  btnLight: 'Book your strategy session',
+  privacy: 'Your data is safe & 100% GDPR-compliant.',
+  successH3: 'Request sent!',
+  successP: 'We will get back to you within 24 hours.',
+  errorAlert: 'There was a problem. Please try again.',
+};
 
 export default function ContactForm({ dark = false }: { dark?: boolean }) {
   const [submitted, setSubmitted] = useState(false);
@@ -8,6 +43,7 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
   const [email, setEmail] = useState('');
   const [company, setCompany] = useState('');
   const [challenge, setChallenge] = useState('');
+  const t = useT(de, en);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,7 +57,7 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
       if (!res.ok) throw new Error('Failed');
       setSubmitted(true);
     } catch {
-      alert('Es gab ein Problem. Bitte versuchen Sie es erneut.');
+      alert(t.errorAlert);
     } finally {
       setLoading(false);
     }
@@ -43,8 +79,8 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className={`text-2xl font-bold mb-2 ${dark ? 'text-primary-foreground' : 'text-foreground'}`}>Anfrage gesendet!</h3>
-        <p className={dark ? 'text-primary-foreground/70' : 'text-muted-foreground'}>Wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
+        <h3 className={`text-2xl font-bold mb-2 ${dark ? 'text-primary-foreground' : 'text-foreground'}`}>{t.successH3}</h3>
+        <p className={dark ? 'text-primary-foreground/70' : 'text-muted-foreground'}>{t.successP}</p>
       </div>
     );
   }
@@ -53,23 +89,23 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
     <form onSubmit={handleSubmit} className="space-y-5 max-w-xl mx-auto text-left">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className={labelClass}>Name</label>
-          <input required type="text" placeholder="Ihr Name" value={name} onChange={(e) => setName(e.target.value)} className={inputClass} />
+          <label className={labelClass}>{t.labelName}</label>
+          <input required type="text" placeholder={t.placeholderName} value={name} onChange={(e) => setName(e.target.value)} className={inputClass} />
         </div>
         <div>
-          <label className={labelClass}>E-Mail</label>
-          <input required type="email" placeholder="name@firma.de" value={email} onChange={(e) => setEmail(e.target.value)} className={inputClass} />
+          <label className={labelClass}>{t.labelEmail}</label>
+          <input required type="email" placeholder={t.placeholderEmail} value={email} onChange={(e) => setEmail(e.target.value)} className={inputClass} />
         </div>
       </div>
 
       <div>
-        <label className={labelClass}>Unternehmen / Website</label>
-        <input required type="text" placeholder="Ihre Firma GmbH" value={company} onChange={(e) => setCompany(e.target.value)} className={inputClass} />
+        <label className={labelClass}>{t.labelCompany}</label>
+        <input required type="text" placeholder={t.placeholderCompany} value={company} onChange={(e) => setCompany(e.target.value)} className={inputClass} />
       </div>
 
       <div>
-        <label className={labelClass}>Ihre größte Herausforderung</label>
-        <textarea required rows={3} placeholder="Welchen Prozess möchten Sie automatisieren?" value={challenge} onChange={(e) => setChallenge(e.target.value)} className={`${inputClass} resize-none`} />
+        <label className={labelClass}>{t.labelChallenge}</label>
+        <textarea required rows={3} placeholder={t.placeholderChallenge} value={challenge} onChange={(e) => setChallenge(e.target.value)} className={`${inputClass} resize-none`} />
       </div>
 
       {dark ? (
@@ -82,7 +118,7 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
             <span className="w-5 h-5 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
           ) : (
             <>
-              Jetzt Erstgespräch sichern
+              {t.btnDark}
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
@@ -95,7 +131,7 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
             <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
           ) : (
             <>
-              Jetzt Strategie-Session sichern
+              {t.btnLight}
               <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
@@ -105,7 +141,7 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
       )}
 
       <p className={`text-center text-xs ${dark ? 'text-primary-foreground/60' : 'text-muted-foreground'}`}>
-        Ihre Daten sind sicher & 100% DSGVO-konform.
+        {t.privacy}
       </p>
     </form>
   );

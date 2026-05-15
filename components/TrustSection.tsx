@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useT } from '../lib/language';
 
 interface TrustSectionProps {
   onOpenDatenschutz: () => void;
@@ -20,8 +21,23 @@ function loadGoogleAnalytics() {
   gtag('config', id);
 }
 
+const de = {
+  text: 'Wir nutzen Cookies und Google Analytics für eine bessere Nutzererfahrung und zur Analyse des Datenverkehrs.',
+  privacyLink: 'Datenschutzerklärung',
+  btnNecessary: 'Nur notwendige',
+  btnAll: 'Alle akzeptieren',
+};
+
+const en = {
+  text: 'We use cookies and Google Analytics for a better user experience and to analyse traffic.',
+  privacyLink: 'Privacy Policy',
+  btnNecessary: 'Necessary only',
+  btnAll: 'Accept all',
+};
+
 export default function TrustSection({ onOpenDatenschutz }: TrustSectionProps) {
   const [visible, setVisible] = useState(false);
+  const t = useT(de, en);
 
   useEffect(() => {
     const consent = localStorage.getItem('cookie-consent');
@@ -48,9 +64,9 @@ export default function TrustSection({ onOpenDatenschutz }: TrustSectionProps) {
       <div className="bg-card border-t border-border shadow-2xl shadow-black/50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground text-center sm:text-left">
-            Wir nutzen Cookies und Google Analytics für eine bessere Nutzererfahrung und zur Analyse des Datenverkehrs.{' '}
+            {t.text}{' '}
             <button onClick={onOpenDatenschutz} className="text-primary hover:underline">
-              Datenschutzerklärung
+              {t.privacyLink}
             </button>
           </p>
           <div className="flex gap-3 flex-shrink-0">
@@ -58,13 +74,13 @@ export default function TrustSection({ onOpenDatenschutz }: TrustSectionProps) {
               onClick={() => handleConsent('necessary')}
               className="px-4 py-2 text-sm font-medium border border-border rounded-lg hover:bg-accent transition-colors text-foreground"
             >
-              Nur notwendige
+              {t.btnNecessary}
             </button>
             <button
               onClick={() => handleConsent('all')}
               className="px-4 py-2 text-sm font-medium bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
             >
-              Alle akzeptieren
+              {t.btnAll}
             </button>
           </div>
         </div>

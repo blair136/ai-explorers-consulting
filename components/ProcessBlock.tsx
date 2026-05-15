@@ -1,29 +1,56 @@
 import React from 'react';
 import { BlurFade } from '../components/ui/blur-fade';
+import { useT } from '../lib/language';
 
-const steps = [
+const deSteps = [
   {
     number: '01',
     title: 'Erstgespräch',
     subtitle: '(15 Min.)',
-    description:
-      'Wir analysieren gemeinsam, wo bei Ihnen das größte Automatisierungspotenzial liegt. Kostenlos, unverbindlich, konkret.',
+    description: 'Wir analysieren gemeinsam, wo bei Ihnen das größte Automatisierungspotenzial liegt. Kostenlos, unverbindlich, konkret.',
   },
   {
     number: '02',
     title: 'Individuelle Roadmap',
-    description:
-      'Sie erhalten einen klaren Plan: welche Prozesse sich lohnen, was realistisch umsetzbar ist und was es kosten würde.',
+    subtitle: undefined,
+    description: 'Sie erhalten einen klaren Plan: welche Prozesse sich lohnen, was realistisch umsetzbar ist und was es kosten würde.',
   },
   {
     number: '03',
     title: 'Umsetzung & Begleitung',
-    description:
-      'Wir implementieren gemeinsam — so, dass Ihr Team danach eigenständig damit arbeiten kann.',
+    subtitle: undefined,
+    description: 'Wir implementieren gemeinsam — so, dass Ihr Team danach eigenständig damit arbeiten kann.',
   },
 ];
 
+const enSteps = [
+  {
+    number: '01',
+    title: 'Discovery Call',
+    subtitle: '(15 min.)',
+    description: 'We jointly analyse where your greatest automation potential lies. Free, non-binding, concrete.',
+  },
+  {
+    number: '02',
+    title: 'Individual Roadmap',
+    subtitle: undefined,
+    description: 'You receive a clear plan: which processes are worth it, what\'s realistically achievable, and what it would cost.',
+  },
+  {
+    number: '03',
+    title: 'Implementation & Support',
+    subtitle: undefined,
+    description: 'We implement together — so your team can work independently with it afterwards.',
+  },
+];
+
+const deHeader = { label: 'Unser Prozess', h2: 'So arbeiten wir' };
+const enHeader = { label: 'Our Process', h2: 'How we work' };
+
 export default function ProcessBlock() {
+  const steps = useT(deSteps, enSteps);
+  const header = useT(deHeader, enHeader);
+
   return (
     <section id="process" className="relative py-24 lg:py-32 bg-primary overflow-hidden">
       {/* Noise texture for depth */}
@@ -33,11 +60,11 @@ export default function ProcessBlock() {
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center mb-16 lg:mb-20">
           <BlurFade delay={0.1} inView>
-            <p className="font-mono text-xs text-primary-foreground/60 tracking-widest uppercase mb-4">Unser Prozess</p>
+            <p className="font-mono text-xs text-primary-foreground/60 tracking-widest uppercase mb-4">{header.label}</p>
           </BlurFade>
           <BlurFade delay={0.2} inView>
             <h2 className="text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl lg:text-5xl">
-              So arbeiten wir
+              {header.h2}
             </h2>
           </BlurFade>
         </div>

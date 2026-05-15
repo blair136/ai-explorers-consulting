@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { BlurFade } from '../components/ui/blur-fade';
 import { ShimmerButton } from '../components/ui/shimmer-button';
 import { ShineBorder } from '../components/ui/shine-border';
+import { useT } from '../lib/language';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -25,11 +26,10 @@ type Screen =
   | 'handoff'
   | 'success';
 
-// ─── Question Data ───────────────────────────────────────────────────────────
+// ─── Question Data (DE) ──────────────────────────────────────────────────────
 
-const questionsMap: Record<Role, Question[]> = {
+const deQuestionsMap: Record<Role, Question[]> = {
   A: [
-    // Dimension 1 — Datenreife
     {
       id: 'A1.1',
       dimension: 'data',
@@ -52,7 +52,6 @@ const questionsMap: Record<Role, Question[]> = {
         { text: 'Unsere Daten sind strukturiert, gepflegt und aktuell', points: 4 },
       ],
     },
-    // Dimension 2 — Change-Readiness
     {
       id: 'A2.1',
       dimension: 'change',
@@ -75,7 +74,6 @@ const questionsMap: Record<Role, Question[]> = {
         { text: 'Ja, wir haben bereits eine Person oder ein Team, das sich damit beschäftigt', points: 4 },
       ],
     },
-    // Dimension 3 — Prozessklarheit
     {
       id: 'A3.1',
       dimension: 'process',
@@ -100,7 +98,6 @@ const questionsMap: Record<Role, Question[]> = {
     },
   ],
   B: [
-    // Dimension 1 — Datenreife
     {
       id: 'B1.1',
       dimension: 'data',
@@ -123,7 +120,6 @@ const questionsMap: Record<Role, Question[]> = {
         { text: 'Unter einer Stunde — die Daten sind jederzeit abrufbar', points: 4 },
       ],
     },
-    // Dimension 2 — Change-Readiness
     {
       id: 'B2.1',
       dimension: 'change',
@@ -146,7 +142,6 @@ const questionsMap: Record<Role, Question[]> = {
         { text: 'KI ist eine erklärte Priorität von oben', points: 4 },
       ],
     },
-    // Dimension 3 — Prozessklarheit
     {
       id: 'B3.1',
       dimension: 'process',
@@ -171,7 +166,6 @@ const questionsMap: Record<Role, Question[]> = {
     },
   ],
   C: [
-    // Dimension 1 — Datenreife
     {
       id: 'C1.1',
       dimension: 'data',
@@ -194,7 +188,6 @@ const questionsMap: Record<Role, Question[]> = {
         { text: 'Selten bis nie', points: 4 },
       ],
     },
-    // Dimension 2 — Change-Readiness
     {
       id: 'C2.1',
       dimension: 'change',
@@ -217,7 +210,6 @@ const questionsMap: Record<Role, Question[]> = {
         { text: 'KI ist bereits ein aktives Thema mit konkreten Projekten', points: 4 },
       ],
     },
-    // Dimension 3 — Prozessklarheit
     {
       id: 'C3.1',
       dimension: 'process',
@@ -243,11 +235,288 @@ const questionsMap: Record<Role, Question[]> = {
   ],
 };
 
-const roleOptions: { label: string; value: Role }[] = [
+// ─── Question Data (EN) ──────────────────────────────────────────────────────
+
+const enQuestionsMap: Record<Role, Question[]> = {
+  A: [
+    {
+      id: 'A1.1',
+      dimension: 'data',
+      question: 'In what form is the most important data in your company stored?',
+      answers: [
+        { text: 'Mostly on paper, in emails or in individual Excel files without a clear structure', points: 1 },
+        { text: 'Digitally, but spread across different systems that do not communicate with each other', points: 2 },
+        { text: 'Centrally in an ERP, CRM or similar system — but not everything is recorded there', points: 3 },
+        { text: 'Structured, centralised and easily accessible to the relevant people', points: 4 },
+      ],
+    },
+    {
+      id: 'A1.2',
+      dimension: 'data',
+      question: 'How well prepared is your company data — i.e. cleansed, current and reliable?',
+      answers: [
+        { text: 'We often have outdated or contradictory data', points: 1 },
+        { text: 'The data is basically available, but the quality varies', points: 2 },
+        { text: 'The data is reliable in most areas', points: 3 },
+        { text: 'Our data is structured, maintained and up to date', points: 4 },
+      ],
+    },
+    {
+      id: 'A2.1',
+      dimension: 'change',
+      question: 'How did your company most recently respond to a major change?',
+      answers: [
+        { text: 'There was significant resistance, the change was only partially implemented', points: 1 },
+        { text: 'There was friction, but we pushed through', points: 2 },
+        { text: 'Most people went along, individual areas put on the brakes', points: 3 },
+        { text: 'Changes are generally embraced openly in our company', points: 4 },
+      ],
+    },
+    {
+      id: 'A2.2',
+      dimension: 'change',
+      question: 'Is there someone in your company — other than yourself — who would actively drive the topic of AI forward?',
+      answers: [
+        { text: 'No, I am standing alone with this', points: 1 },
+        { text: 'Perhaps one or two people, but without a clear mandate', points: 2 },
+        { text: 'Yes, individual employees are already interested and active', points: 3 },
+        { text: 'Yes, we already have a person or team working on this', points: 4 },
+      ],
+    },
+    {
+      id: 'A3.1',
+      dimension: 'process',
+      question: 'How well are the most important processes in your company documented?',
+      answers: [
+        { text: 'Barely — much runs on the knowledge of individual people', points: 1 },
+        { text: 'Partially documented, but outdated or incomplete', points: 2 },
+        { text: 'Most core processes are described, but not consistently used', points: 3 },
+        { text: 'Our processes are clearly documented and actively maintained', points: 4 },
+      ],
+    },
+    {
+      id: 'A3.2',
+      dimension: 'process',
+      question: 'What happens when a key person is absent for two weeks?',
+      answers: [
+        { text: 'Significant problems arise because knowledge only resides with that person', points: 1 },
+        { text: 'There is friction, but we manage somehow', points: 2 },
+        { text: 'Most tasks can be taken over by others', points: 3 },
+        { text: 'No problem — processes and knowledge are clearly distributed', points: 4 },
+      ],
+    },
+  ],
+  B: [
+    {
+      id: 'B1.1',
+      dimension: 'data',
+      question: 'How does your team work with data and information today?',
+      answers: [
+        { text: 'Mainly on paper or in personal notes and emails', points: 1 },
+        { text: 'In Excel or Word files that everyone saves locally', points: 2 },
+        { text: 'In shared tools, but without a consistent structure', points: 3 },
+        { text: 'In a shared system with clear structures and access rules', points: 4 },
+      ],
+    },
+    {
+      id: 'B1.2',
+      dimension: 'data',
+      question: "If you had to create a report on your team's work from the last 30 days tomorrow — how long would that take?",
+      answers: [
+        { text: 'Several days, because the data is distributed and incomplete', points: 1 },
+        { text: 'Half a day, because I would have to manually search for a lot', points: 2 },
+        { text: 'A few hours, because most data is available but not prepared', points: 3 },
+        { text: 'Under an hour — the data is accessible at any time', points: 4 },
+      ],
+    },
+    {
+      id: 'B2.1',
+      dimension: 'change',
+      question: 'If you were to introduce a new tool in your team tomorrow — what would the reaction look like?',
+      answers: [
+        { text: 'Scepticism and resistance — new tools are not readily accepted here', points: 1 },
+        { text: 'Acceptance if I justify it clearly, but no enthusiasm', points: 2 },
+        { text: 'Most would join in, some would need more time', points: 3 },
+        { text: 'My team is generally open to new ways of working', points: 4 },
+      ],
+    },
+    {
+      id: 'B2.2',
+      dimension: 'change',
+      question: 'How strongly does your management support the topic of AI?',
+      answers: [
+        { text: 'The topic is not on the agenda at management level, or is viewed critically', points: 1 },
+        { text: 'There is basic interest, but no clear priority', points: 2 },
+        { text: 'Leadership supports it, but leaves implementation to us', points: 3 },
+        { text: 'AI is a stated priority from above', points: 4 },
+      ],
+    },
+    {
+      id: 'B3.1',
+      dimension: 'process',
+      question: 'If a new team member started tomorrow — how would you show them how work gets done?',
+      answers: [
+        { text: 'I would have to explain everything myself, much is not written down anywhere', points: 1 },
+        { text: 'There are individual documents, but I would have to add a lot', points: 2 },
+        { text: 'There is an onboarding process, but it has gaps', points: 3 },
+        { text: 'We have clear onboarding materials and documented procedures', points: 4 },
+      ],
+    },
+    {
+      id: 'B3.2',
+      dimension: 'process',
+      question: 'Which tasks in your team repeat regularly in the same way?',
+      answers: [
+        { text: 'Hardly any — almost everything is individual and situation-dependent', points: 1 },
+        { text: 'Some tasks repeat, but everyone does it slightly differently', points: 2 },
+        { text: 'There are clear routine tasks that always follow the same pattern', points: 3 },
+        { text: 'Many tasks run according to fixed, documented patterns', points: 4 },
+      ],
+    },
+  ],
+  C: [
+    {
+      id: 'C1.1',
+      dimension: 'data',
+      question: 'In what form is the information you work with daily stored?',
+      answers: [
+        { text: 'Mostly on paper or in handwritten notes', points: 1 },
+        { text: 'In emails and personal files on my computer', points: 2 },
+        { text: 'In shared folders or tools, but without a clear structure', points: 3 },
+        { text: 'In a central system that everyone uses', points: 4 },
+      ],
+    },
+    {
+      id: 'C1.2',
+      dimension: 'data',
+      question: 'How often do you spend more than 10 minutes searching for information you should already have?',
+      answers: [
+        { text: 'Daily', points: 1 },
+        { text: 'Several times a week', points: 2 },
+        { text: 'Occasionally', points: 3 },
+        { text: 'Rarely or never', points: 4 },
+      ],
+    },
+    {
+      id: 'C2.1',
+      dimension: 'change',
+      question: 'How open is your company in general to new ways of working and tools?',
+      answers: [
+        { text: 'Rather conservative — tried-and-tested approaches are retained', points: 1 },
+        { text: 'Depends on the area — some open, some not', points: 2 },
+        { text: 'Generally open, but introductions take a long time', points: 3 },
+        { text: 'We regularly try out new things', points: 4 },
+      ],
+    },
+    {
+      id: 'C2.2',
+      dimension: 'change',
+      question: 'How is the topic of AI currently being addressed in your company?',
+      answers: [
+        { text: 'It is hardly talked about', points: 1 },
+        { text: 'There are discussions, but no concrete steps', points: 2 },
+        { text: 'Individual colleagues or departments are already experimenting', points: 3 },
+        { text: 'AI is already an active topic with concrete projects', points: 4 },
+      ],
+    },
+    {
+      id: 'C3.1',
+      dimension: 'process',
+      question: 'Which tasks in your daily work repeat regularly in the same way?',
+      answers: [
+        { text: 'Almost everything is individual — hardly anything always runs the same way', points: 1 },
+        { text: 'Some tasks repeat, but with many exceptions', points: 2 },
+        { text: 'Several tasks regularly follow the same pattern', points: 3 },
+        { text: 'A large part of my work follows clear, recurring workflows', points: 4 },
+      ],
+    },
+    {
+      id: 'C3.2',
+      dimension: 'process',
+      question: 'Could you explain to another person in 30 minutes how your most important routine tasks work?',
+      answers: [
+        { text: 'No — much is hard to explain because it varies from situation to situation', points: 1 },
+        { text: 'Partially — the basic structure yes, but not the details', points: 2 },
+        { text: 'Yes, I could describe most tasks clearly', points: 3 },
+        { text: 'Yes, much is already documented or at least easy to explain', points: 4 },
+      ],
+    },
+  ],
+};
+
+const deRoleOptions: { label: string; value: Role }[] = [
   { label: 'Geschäftsführung / Inhaber', value: 'A' },
   { label: 'Führungskraft / Abteilungsleitung', value: 'B' },
   { label: 'Mitarbeiter / Fachkraft', value: 'C' },
 ];
+
+const enRoleOptions: { label: string; value: Role }[] = [
+  { label: 'Management / Owner', value: 'A' },
+  { label: 'Team Leader / Department Head', value: 'B' },
+  { label: 'Employee / Specialist', value: 'C' },
+];
+
+const deUi = {
+  sectionLabel: 'KI-Readiness-Check',
+  h2Part1: 'Wo steht Ihr Unternehmen ',
+  h2Gradient: 'beim Thema KI?',
+  description: 'Beantworten Sie 6 Fragen und erhalten Sie Ihre persönliche Auswertung — kostenlos und ohne Verpflichtung.',
+  roleQuestion: 'Welche Rolle haben Sie in Ihrem Unternehmen?',
+  progressLabel: (current: number) => `Frage ${current} von 6`,
+  back: 'Zurück',
+  dimData: 'Datenreife',
+  dimChange: 'Change-Readiness',
+  dimProcess: 'Prozessklarheit',
+  handoffTitle: 'Ihr persönliches KI-Readiness-Profil ist fertig.',
+  handoffDesc: 'Wir haben Ihre Antworten in drei Bereichen ausgewertet: Ihre Datenlage, die Veränderungsbereitschaft in Ihrer Organisation und die Klarheit Ihrer Prozesse. Ihre individuelle Auswertung mit konkreten nächsten Schritten schicken wir Ihnen jetzt zu.',
+  resultsLabel: 'Ergebnisse nach 6 Monaten',
+  firstnamePlaceholder: 'Vorname',
+  emailPlaceholder: 'E-Mail',
+  firstnameLabel: 'Vorname',
+  emailLabel: 'E-Mail',
+  sendBtn: 'Auswertung zusenden →',
+  sending: 'Wird gesendet...',
+  noSpam: 'Keine Weitergabe. Kein Spam. Abmeldung jederzeit.',
+  successTitle: 'Vielen Dank!',
+  successSent: 'Ihre Auswertung ist unterwegs.',
+  successCheck: 'Prüfen Sie Ihr Postfach — die E-Mail sollte in wenigen Minuten ankommen.',
+  errFirstname: 'Bitte geben Sie Ihren Vornamen ein.',
+  errEmail: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
+  levelLow: 'Niedrig',
+  levelMid: 'Mittel',
+  levelHigh: 'Hoch',
+};
+
+const enUi = {
+  sectionLabel: 'AI Readiness Check',
+  h2Part1: 'Where does your company stand ',
+  h2Gradient: 'on AI?',
+  description: 'Answer 6 questions and receive your personal assessment — free and without obligation.',
+  roleQuestion: 'What is your role in your company?',
+  progressLabel: (current: number) => `Question ${current} of 6`,
+  back: 'Back',
+  dimData: 'Data Maturity',
+  dimChange: 'Change Readiness',
+  dimProcess: 'Process Clarity',
+  handoffTitle: 'Your personal AI Readiness Profile is ready.',
+  handoffDesc: 'We have evaluated your answers in three areas: your data situation, the change readiness in your organisation and the clarity of your processes. We will now send you your individual assessment with concrete next steps.',
+  resultsLabel: 'Results after 6 months',
+  firstnamePlaceholder: 'First name',
+  emailPlaceholder: 'Email',
+  firstnameLabel: 'First name',
+  emailLabel: 'Email',
+  sendBtn: 'Send assessment →',
+  sending: 'Sending...',
+  noSpam: 'No sharing. No spam. Unsubscribe at any time.',
+  successTitle: 'Thank you!',
+  successSent: 'Your assessment is on its way.',
+  successCheck: 'Check your inbox — the email should arrive within a few minutes.',
+  errFirstname: 'Please enter your first name.',
+  errEmail: 'Please enter a valid email address.',
+  levelLow: 'Low',
+  levelMid: 'Medium',
+  levelHigh: 'High',
+};
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
@@ -262,6 +531,10 @@ export default function ReadinessCheck() {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState('');
+
+  const questionsMap = useT(deQuestionsMap, enQuestionsMap);
+  const roleOptions = useT(deRoleOptions, enRoleOptions);
+  const ui = useT(deUi, enUi);
 
   const questions = role ? questionsMap[role] : [];
 
@@ -280,7 +553,7 @@ export default function ReadinessCheck() {
 
   const handleAnswerSelect = useCallback(
     (points: number, answerIndex: number) => {
-      if (selectedAnswer !== null) return; // prevent double-click
+      if (selectedAnswer !== null) return;
       setSelectedAnswer(answerIndex);
 
       setTimeout(() => {
@@ -317,11 +590,11 @@ export default function ReadinessCheck() {
       setFormError('');
 
       if (!firstName.trim()) {
-        setFormError('Bitte geben Sie Ihren Vornamen ein.');
+        setFormError(ui.errFirstname);
         return;
       }
       if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        setFormError('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+        setFormError(ui.errEmail);
         return;
       }
 
@@ -335,7 +608,7 @@ export default function ReadinessCheck() {
           body: JSON.stringify({
             firstName,
             email,
-            role: selectedRole,
+            role,
             scores: scores ? {
               dataScore: getLevel(scores.dataScore),
               changeScore: getLevel(scores.changeScore),
@@ -351,7 +624,7 @@ export default function ReadinessCheck() {
       setIsSubmitting(false);
       setScreen('success');
     },
-    [firstName, email]
+    [firstName, email, ui]
   );
 
   // ─── Scoring ─────────────────────────────────────────────────────────
@@ -365,9 +638,9 @@ export default function ReadinessCheck() {
   };
 
   const getLevel = (score: number): string => {
-    if (score <= 2.0) return 'Niedrig';
-    if (score <= 3.0) return 'Mittel';
-    return 'Hoch';
+    if (score <= 2.0) return ui.levelLow;
+    if (score <= 3.0) return ui.levelMid;
+    return ui.levelHigh;
   };
 
   const getLevelColor = (score: number): string => {
@@ -382,7 +655,7 @@ export default function ReadinessCheck() {
     <div className="mb-8">
       <div className="flex items-center justify-between mb-2">
         <span className="text-sm text-muted-foreground">
-          Frage {currentQuestion + 1} von 6
+          {ui.progressLabel(currentQuestion + 1)}
         </span>
         <span className="text-sm text-muted-foreground">
           {Math.round(((currentQuestion + 1) / 6) * 100)}%
@@ -418,7 +691,7 @@ export default function ReadinessCheck() {
       >
         <path d="m15 18-6-6 6-6" />
       </svg>
-      Zurück
+      {ui.back}
     </button>
   );
 
@@ -428,7 +701,7 @@ export default function ReadinessCheck() {
     <BlurFade delay={0} inView key="role-screen">
       <div className="text-center mb-10">
         <p className="text-lg text-muted-foreground sm:text-xl">
-          Welche Rolle haben Sie in Ihrem Unternehmen?
+          {ui.roleQuestion}
         </p>
       </div>
       <div className="flex flex-col gap-3 max-w-xl mx-auto">
@@ -575,13 +848,10 @@ export default function ReadinessCheck() {
 
           <div className="text-center mb-8">
             <h3 className="text-lg font-bold text-foreground sm:text-xl lg:text-2xl mb-4">
-              Ihr persönliches KI-Readiness-Profil ist fertig.
+              {ui.handoffTitle}
             </h3>
             <p className="text-muted-foreground leading-relaxed">
-              Wir haben Ihre Antworten in drei Bereichen ausgewertet: Ihre Datenlage,
-              die Veränderungsbereitschaft in Ihrer Organisation und die Klarheit Ihrer
-              Prozesse. Ihre individuelle Auswertung mit konkreten nächsten Schritten
-              schicken wir Ihnen jetzt zu.
+              {ui.handoffDesc}
             </p>
           </div>
 
@@ -589,9 +859,9 @@ export default function ReadinessCheck() {
           {scores && (
             <div className="grid grid-cols-3 gap-2 mb-8">
               {[
-                { label: 'Datenreife', score: scores.dataScore },
-                { label: 'Change-Readiness', score: scores.changeScore },
-                { label: 'Prozessklarheit', score: scores.processScore },
+                { label: ui.dimData, score: scores.dataScore },
+                { label: ui.dimChange, score: scores.changeScore },
+                { label: ui.dimProcess, score: scores.processScore },
               ].map((dim) => (
                 <div
                   key={dim.label}
@@ -611,12 +881,12 @@ export default function ReadinessCheck() {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <label htmlFor="rc-firstname" className="sr-only">
-                  Vorname
+                  {ui.firstnameLabel}
                 </label>
                 <input
                   id="rc-firstname"
                   type="text"
-                  placeholder="Vorname"
+                  placeholder={ui.firstnamePlaceholder}
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                   className="w-full rounded-xl border border-border bg-card/50 px-4 py-3.5 text-foreground placeholder:text-muted-foreground/50 transition-colors focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
@@ -624,12 +894,12 @@ export default function ReadinessCheck() {
               </div>
               <div>
                 <label htmlFor="rc-email" className="sr-only">
-                  E-Mail
+                  {ui.emailLabel}
                 </label>
                 <input
                   id="rc-email"
                   type="email"
-                  placeholder="E-Mail"
+                  placeholder={ui.emailPlaceholder}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full rounded-xl border border-border bg-card/50 px-4 py-3.5 text-foreground placeholder:text-muted-foreground/50 transition-colors focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
@@ -670,15 +940,15 @@ export default function ReadinessCheck() {
                       d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
                     />
                   </svg>
-                  Wird gesendet...
+                  {ui.sending}
                 </span>
               ) : (
-                'Auswertung zusenden \u2192'
+                ui.sendBtn
               )}
             </ShimmerButton>
 
             <p className="text-center text-xs text-muted-foreground">
-              Keine Weitergabe. Kein Spam. Abmeldung jederzeit.
+              {ui.noSpam}
             </p>
           </form>
         </div>
@@ -716,13 +986,13 @@ export default function ReadinessCheck() {
         </div>
 
         <h3 className="text-2xl font-bold text-foreground sm:text-3xl mb-3">
-          Vielen Dank!
+          {ui.successTitle}
         </h3>
         <p className="text-lg text-muted-foreground leading-relaxed">
-          Ihre Auswertung ist unterwegs.
+          {ui.successSent}
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
-          Prüfen Sie Ihr Postfach — die E-Mail sollte in wenigen Minuten ankommen.
+          {ui.successCheck}
         </p>
       </div>
     </BlurFade>
@@ -742,18 +1012,17 @@ export default function ReadinessCheck() {
             {/* Section label pill */}
             <div className="mb-6 flex justify-center">
               <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
-                KI-Readiness-Check
+                {ui.sectionLabel}
               </span>
             </div>
 
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-              <span className="text-foreground">Wo steht Ihr Unternehmen </span>
-              <span className="gradient-text">beim Thema KI?</span>
+              <span className="text-foreground">{ui.h2Part1}</span>
+              <span className="gradient-text">{ui.h2Gradient}</span>
             </h2>
 
             <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg leading-relaxed">
-              Beantworten Sie 6 Fragen und erhalten Sie Ihre persönliche Auswertung
-              — kostenlos und ohne Verpflichtung.
+              {ui.description}
             </p>
           </div>
         </BlurFade>

@@ -1,9 +1,11 @@
 import React from 'react';
 import { cn } from '../lib/utils';
+import { useLang } from '../lib/language';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = React.useState(false);
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const { lang, setLang } = useLang();
 
   React.useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -11,12 +13,21 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { label: 'Leistungen', href: '#services' },
-    { label: 'Framework', href: '#framework' },
-    { label: 'Training', href: '#training' },
-    { label: 'FAQ', href: '#faq' },
-  ];
+  const navLinks = lang === 'en'
+    ? [
+        { label: 'Services', href: '#services' },
+        { label: 'Framework', href: '#framework' },
+        { label: 'Training', href: '#training' },
+        { label: 'FAQ', href: '#faq' },
+      ]
+    : [
+        { label: 'Leistungen', href: '#services' },
+        { label: 'Framework', href: '#framework' },
+        { label: 'Training', href: '#training' },
+        { label: 'FAQ', href: '#faq' },
+      ];
+
+  const ctaLabel = lang === 'en' ? 'Discovery Call' : 'Beratungsgespräch';
 
   return (
     <nav
@@ -51,13 +62,19 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:block">
+          {/* Desktop CTA + Language Toggle */}
+          <div className="hidden md:flex items-center gap-2">
+            <button
+              onClick={() => setLang(lang === 'de' ? 'en' : 'de')}
+              className="font-mono text-xs font-semibold tracking-wider text-muted-foreground hover:text-primary transition-colors px-2"
+            >
+              {lang === 'de' ? 'EN' : 'DE'}
+            </button>
             <a
               href="#contact"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground text-sm font-semibold rounded-lg hover:bg-primary/90 transition-colors"
             >
-              Beratungsgespr&auml;ch
+              {ctaLabel}
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -108,7 +125,7 @@ export default function Navbar() {
         <div
           className={cn(
             'md:hidden overflow-hidden transition-all duration-300 ease-in-out',
-            menuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
+            menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
           )}
         >
           <div className="pb-4 border-t border-border mt-2 pt-4 space-y-1">
@@ -122,12 +139,20 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
+            <div className="flex items-center gap-3 px-4 mt-3">
+              <button
+                onClick={() => setLang(lang === 'de' ? 'en' : 'de')}
+                className="font-mono text-xs font-semibold tracking-wider text-muted-foreground hover:text-primary transition-colors px-2 py-1 border border-border rounded"
+              >
+                {lang === 'de' ? 'EN' : 'DE'}
+              </button>
+            </div>
             <a
               href="#contact"
               onClick={() => setMenuOpen(false)}
               className="flex items-center gap-2 mx-4 mt-3 px-4 py-2.5 text-sm font-semibold bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
             >
-              Beratungsgespr&auml;ch
+              {ctaLabel}
               <svg
                 className="w-4 h-4"
                 fill="none"

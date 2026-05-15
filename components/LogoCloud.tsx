@@ -1,5 +1,6 @@
 import React from 'react';
 import { Marquee } from '../components/ui/marquee';
+import { useT } from '../lib/language';
 
 const logos = [
   { name: 'Bosch', src: 'Bosch.png' },
@@ -14,12 +15,17 @@ const logos = [
   { name: 'VM', src: 'vm logo.png' },
 ];
 
+const de = { label: 'Unternehmen, mit denen wir bereits gearbeitet haben' };
+const en = { label: 'Companies we have already worked with' };
+
 export default function LogoCloud() {
+  const t = useT(de, en);
+
   return (
     <section className="py-14 lg:py-16 border-y border-border/40 bg-secondary/30">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <p className="text-center text-xs font-semibold text-muted-foreground mb-10 tracking-widest uppercase">
-          Unternehmen, mit denen wir bereits gearbeitet haben
+          {t.label}
         </p>
         <div className="relative">
           <Marquee className="[--gap:1.5rem]" pauseOnHover>

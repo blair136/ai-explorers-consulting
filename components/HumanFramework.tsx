@@ -1,42 +1,84 @@
 import React, { useState } from 'react';
 import { BlurFade } from '../components/ui/blur-fade';
 import { BorderBeam } from '../components/ui/border-beam';
+import { useT } from '../lib/language';
 
-const pillars = [
+const dePillars = [
   {
     letter: 'H',
     title: 'Human-first',
-    description:
-      'Bevor die erste KI-Lösung eingeführt wird, schaffen wir die richtige Grundlage: gemeinsames Verständnis, adressierte Vorbehalte, Technologie als Unterstützung. KI-Transformation beginnt mit Menschen.',
+    description: 'Bevor die erste KI-Lösung eingeführt wird, schaffen wir die richtige Grundlage: gemeinsames Verständnis, adressierte Vorbehalte, Technologie als Unterstützung. KI-Transformation beginnt mit Menschen.',
   },
   {
     letter: 'U',
     title: 'Understand',
-    description:
-      'Wir analysieren, wie Ihr Unternehmen heute funktioniert — Prozesse, Abläufe, Engpässe. Erst wenn wir verstehen, wo Zeit verloren geht, können wir gezielt ansetzen. So schaffen wir Lösungen, die Ihnen genau an den richtigen Stellen helfen.',
+    description: 'Wir analysieren, wie Ihr Unternehmen heute funktioniert — Prozesse, Abläufe, Engpässe. Erst wenn wir verstehen, wo Zeit verloren geht, können wir gezielt ansetzen. So schaffen wir Lösungen, die Ihnen genau an den richtigen Stellen helfen.',
   },
   {
     letter: 'M',
     title: 'Map',
-    description:
-      'Wir entwickeln eine priorisierte Landkarte aller KI-Anwendungsfälle: Quick Wins mit sofortiger Wirkung und strategische Projekte mit langfristigem Impact. Damit sehen wir genau, was wann sinnvoll ist.',
+    description: 'Wir entwickeln eine priorisierte Landkarte aller KI-Anwendungsfälle: Quick Wins mit sofortiger Wirkung und strategische Projekte mit langfristigem Impact. Damit sehen wir genau, was wann sinnvoll ist.',
   },
   {
     letter: 'A',
     title: 'Adapt',
-    description:
-      'Theorie wird Praxis. Wir pilotieren Lösungen direkt in Ihrem Unternehmen, passen sie iterativ an und messen konkrete Ergebnisse. Dadurch erfolgt eine schrittweise Einführung mit direktem Feedback.',
+    description: 'Theorie wird Praxis. Wir pilotieren Lösungen direkt in Ihrem Unternehmen, passen sie iterativ an und messen konkrete Ergebnisse. Dadurch erfolgt eine schrittweise Einführung mit direktem Feedback.',
   },
   {
     letter: 'N',
     title: 'Navigate',
-    description:
-      'KI ist kein Projekt mit Enddatum. Wir begleiten Sie dabei, Lösungen auszuweiten, Ihr Team zu befähigen und eine interne KI-Kompetenz aufzubauen, die langfristig trägt.',
+    description: 'KI ist kein Projekt mit Enddatum. Wir begleiten Sie dabei, Lösungen auszuweiten, Ihr Team zu befähigen und eine interne KI-Kompetenz aufzubauen, die langfristig trägt.',
   },
 ];
 
+const enPillars = [
+  {
+    letter: 'H',
+    title: 'Human-first',
+    description: 'Before the first AI solution is introduced, we create the right foundation: shared understanding, addressed concerns, technology as support. AI transformation starts with people.',
+  },
+  {
+    letter: 'U',
+    title: 'Understand',
+    description: 'We analyse how your company works today — processes, workflows, bottlenecks. Only when we understand where time is lost can we act precisely. This is how we create solutions that help you in exactly the right places.',
+  },
+  {
+    letter: 'M',
+    title: 'Map',
+    description: 'We develop a prioritised map of all AI use cases: quick wins with immediate impact and strategic projects with long-term effect. This lets us see exactly what makes sense and when.',
+  },
+  {
+    letter: 'A',
+    title: 'Adapt',
+    description: 'Theory becomes practice. We pilot solutions directly in your company, adapt them iteratively and measure concrete results. This enables a step-by-step rollout with direct feedback.',
+  },
+  {
+    letter: 'N',
+    title: 'Navigate',
+    description: 'AI is not a project with an end date. We support you in expanding solutions, empowering your team and building an internal AI competence that endures long-term.',
+  },
+];
+
+const deHeader = {
+  label: 'Unsere Methode',
+  h2: 'Das',
+  h2_gradient: 'HUMAN',
+  h2_rest: 'Framework',
+  description: 'Viele Unternehmen wissen, dass KI wichtig ist — aber nicht, wo sie anfangen sollen. Das HUMAN Framework gibt Ihnen einen klaren, strukturierten Weg: von der ersten Orientierung bis zum eigenständigen KI-Einsatz.',
+};
+
+const enHeader = {
+  label: 'Our Method',
+  h2: 'The',
+  h2_gradient: 'HUMAN',
+  h2_rest: 'Framework',
+  description: 'Many companies know that AI is important — but not where to start. The HUMAN Framework gives you a clear, structured path: from the first orientation to independent AI adoption.',
+};
+
 export default function HumanFramework() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const pillars = useT(dePillars, enPillars);
+  const header = useT(deHeader, enHeader);
 
   return (
     <section id="human" className="relative py-24 lg:py-32">
@@ -48,19 +90,19 @@ export default function HumanFramework() {
         <div className="mx-auto mb-16 max-w-2xl text-center">
           <BlurFade delay={0.1}>
             <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
-              Unsere Methode
+              {header.label}
             </p>
           </BlurFade>
           <BlurFade delay={0.2}>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-              Das{' '}
-              <span className="gradient-text">HUMAN</span>{' '}
-              Framework
+              {header.h2}{' '}
+              <span className="gradient-text">{header.h2_gradient}</span>{' '}
+              {header.h2_rest}
             </h2>
           </BlurFade>
           <BlurFade delay={0.3}>
             <p className="mt-4 text-muted-foreground text-lg">
-              Viele Unternehmen wissen, dass KI wichtig ist — aber nicht, wo sie anfangen sollen. Das HUMAN Framework gibt Ihnen einen klaren, strukturierten Weg: von der ersten Orientierung bis zum eigenständigen KI-Einsatz.
+              {header.description}
             </p>
           </BlurFade>
         </div>
